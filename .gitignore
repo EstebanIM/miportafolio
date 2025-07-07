@@ -83,3 +83,6 @@ temp/
 *.njsproj
 *.sln
 *.sw?
+
+# CVs (opcional - descomenta si no quieres subir los CVs al repo)
+# /public/cv/*.pdf
