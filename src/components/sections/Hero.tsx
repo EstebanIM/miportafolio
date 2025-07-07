@@ -39,7 +39,7 @@ export function Hero() {
           >
             Esteban Inzunza
             <br />
-            Desarrollador Full Stack
+            Desarrollador Front End
           </motion.h1>
           
           <motion.p

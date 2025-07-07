@@ -1,6 +1,6 @@
-# 🚀 Mi Portafolio Profesional
+# 🚀 Mi Portafolio Profesional - Front End Developer
 
-Un portafolio moderno y responsive construido con las últimas tecnologías web.
+Un portafolio moderno y responsive construido con las últimas tecnologías web para mostrar mis habilidades como desarrollador front-end.
 
 ## ✨ Características
 
@@ -19,6 +19,16 @@ Un portafolio moderno y responsive construido con las últimas tecnologías web.
 - **Animaciones**: Framer Motion
 - **Iconos**: Lucide React
 - **Deployment**: Vercel
+
+## 🎯 Enfoque Front-End
+
+Este portafolio está diseñado para demostrar habilidades específicas de desarrollo front-end:
+
+- **Interfaces Modernas**: Componentes React reutilizables y bien estructurados
+- **Animaciones Fluidas**: Uso de Framer Motion para crear experiencias interactivas
+- **Diseño Responsive**: Adaptación perfecta a diferentes tamaños de pantalla
+- **Optimización de Performance**: Carga rápida y experiencia de usuario fluida
+- **Accesibilidad**: Implementación de mejores prácticas de A11y
 
 ## 📦 Instalación Local
 
@@ -127,8 +137,6 @@ Project Link: https://github.com/tu-usuario/mi-portafolio (https://github.com/tu
 
 ⭐ ¡No olvides darle una estrella al repositorio si te ha sido útil!
 
-```
-
 ## 🤝 Contribución
 
 1. Fork el proyecto
@@ -150,4 +158,3 @@ Project Link: https://github.com/EstebanIM/miportafolio
 ---
 
 ⭐ ¡No olvides darle una estrella al repositorio si te ha sido útil!
-```

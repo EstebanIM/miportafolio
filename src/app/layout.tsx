@@ -13,8 +13,8 @@ export const metadata: Metadata = {
     default: 'Esteban Inzunza - Desarrollador Front End',
     template: '%s | Esteban Inzunza'
   },
-  description: 'Desarrollador Front End especializado en React, Next.js y TypeScript. Creando experiencias web modernas y escalables.',
-  keywords: ['desarrollador', 'react', 'nextjs', 'typescript', 'frontend'],
+  description: 'Desarrollador Front End especializado en React, Next.js y TypeScript. Creando interfaces web modernas y atractivas.',
+  keywords: ['desarrollador', 'frontend', 'react', 'nextjs', 'typescript', 'javascript', 'css'],
   authors: [{ name: 'Esteban Inzunza' }],
   creator: 'Esteban Inzunza',
   openGraph: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Esteban Inzunza - Desarrollador Front End',
     description: 'Desarrollador Front End especializado en React, Next.js y TypeScript.',
-    creator: '@EstebanIM',
+    creator: '@tu_usuario',
     images: [`${siteUrl}/og-image.jpg`],
   },
   robots: {

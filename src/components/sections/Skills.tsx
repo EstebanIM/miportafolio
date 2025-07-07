@@ -3,19 +3,21 @@
 import { motion } from 'framer-motion'
 
 const skills = [
-  { name: 'React', level: 90, category: 'Frontend' },
-  { name: 'Next.js', level: 85, category: 'Frontend' },
-  { name: 'TypeScript', level: 88, category: 'Frontend' },
-  { name: 'Tailwind CSS', level: 92, category: 'Frontend' },
-  { name: 'Node.js', level: 80, category: 'Backend' },
-  { name: 'Express.js', level: 75, category: 'Backend' },
-  { name: 'MongoDB', level: 70, category: 'Database' },
-  { name: 'PostgreSQL', level: 72, category: 'Database' },
-  { name: 'Git', level: 85, category: 'Tools' },
-  { name: 'Docker', level: 65, category: 'Tools' },
+  { name: 'React', level: 85, category: 'Frontend' },
+  { name: 'Next.js', level: 80, category: 'Frontend' },
+  { name: 'TypeScript', level: 75, category: 'Frontend' },
+  { name: 'JavaScript', level: 90, category: 'Frontend' },
+  { name: 'HTML5', level: 95, category: 'Frontend' },
+  { name: 'CSS3', level: 90, category: 'Frontend' },
+  { name: 'Tailwind CSS', level: 85, category: 'Frontend' },
+  { name: 'Sass/SCSS', level: 80, category: 'Frontend' },
+  { name: 'Git', level: 80, category: 'Tools' },
+  { name: 'Figma', level: 70, category: 'Tools' },
+  { name: 'Responsive Design', level: 90, category: 'Design' },
+  { name: 'UI/UX Principles', level: 75, category: 'Design' },
 ]
 
-const categories = ['Frontend', 'Backend', 'Database', 'Tools']
+const categories = ['Frontend', 'Design', 'Tools']
 
 export function Skills() {
   return (
