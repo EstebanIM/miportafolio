@@ -10,34 +10,34 @@ const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Tu Nombre Portfolio'
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Tu Nombre - Desarrollador Full Stack',
-    template: '%s | Tu Nombre'
+    default: 'Esteban Inzunza - Desarrollador Front End',
+    template: '%s | Esteban Inzunza'
   },
-  description: 'Desarrollador Full Stack especializado en React, Next.js y TypeScript. Creando experiencias web modernas y escalables.',
+  description: 'Desarrollador Front End especializado en React, Next.js y TypeScript. Creando experiencias web modernas y escalables.',
   keywords: ['desarrollador', 'react', 'nextjs', 'typescript', 'frontend', 'fullstack'],
-  authors: [{ name: 'Tu Nombre' }],
-  creator: 'Tu Nombre',
+  authors: [{ name: 'Esteban Inzunza' }],
+  creator: 'Esteban Inzunza',
   openGraph: {
     type: 'website',
     locale: 'es_ES',
     url: siteUrl,
-    title: 'Tu Nombre - Desarrollador Full Stack',
-    description: 'Desarrollador Full Stack especializado en React, Next.js y TypeScript.',
+    title: 'Esteban Inzunza - Desarrollador Front End',
+    description: 'Desarrollador Front End especializado en React, Next.js y TypeScript.',
     siteName: siteName,
     images: [
       {
         url: `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'Tu Nombre - Desarrollador Full Stack',
+        alt: 'Esteban Inzunza - Desarrollador Front End',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tu Nombre - Desarrollador Full Stack',
-    description: 'Desarrollador Full Stack especializado en React, Next.js y TypeScript.',
-    creator: '@tu_usuario',
+    title: 'Esteban Inzunza - Desarrollador Front End',
+    description: 'Desarrollador Front End especializado en React, Next.js y TypeScript.',
+    creator: '@EstebanIM',
     images: [`${siteUrl}/og-image.jpg`],
   },
   robots: {

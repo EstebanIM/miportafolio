@@ -121,7 +121,7 @@ src/
 
 Tu Nombre - [@tu_usuario](https://twitter.com/tu_usuario) - tu-email@example.com
 
-Project Link: [https://github.com/tu-usuario/mi-portafolio](https://github.com/tu-usuario/mi-portafolio)
+Project Link: https://github.com/tu-usuario/mi-portafolio (https://github.com/tu-usuario/mi-portafolio)
 
 ---
 
@@ -145,7 +145,7 @@ Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
 
 Esteban Inzunza - https://www.linkedin.com/in/einzunza2/ - einzunza2@gmail.com
 
-Project Link: [https://github.com/EstebanIM/miportafolio]
+Project Link: https://github.com/EstebanIM/miportafolio
 
 ---
 
