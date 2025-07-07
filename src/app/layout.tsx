@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { ThemeProvider } from '@/components/theme/theme-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tu-dominio.vercel.app'
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Mi Portafolio'
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Esteban Inzunza Portfolio'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -71,7 +72,14 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={inter.className}>
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
