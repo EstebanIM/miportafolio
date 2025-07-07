@@ -8,25 +8,25 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p className="text-muted-foreground text-sm">
-              © 2025 Tu Nombre. Todos los derechos reservados.
+              © 2025 Esteban Inzunza. Todos los derechos reservados.
             </p>
           </div>
 
           <div className="flex items-center space-x-4">
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/EstebanIM" target="_blank" rel="noopener noreferrer">
                 <Github className="h-4 w-4" />
                 <span className="sr-only">GitHub</span>
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer">
+              <a href="https://linkedin.com/in/einzunza2" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-4 w-4" />
                 <span className="sr-only">LinkedIn</span>
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="mailto:tu-email@example.com">
+              <a href="mailto:einzunza2@gmail.com">
                 <Mail className="h-4 w-4" />
                 <span className="sr-only">Email</span>
               </a>

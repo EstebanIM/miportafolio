@@ -42,7 +42,7 @@ export function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             className="text-xl font-bold"
           >
-            Tu Nombre
+            Esteban Inzunza
           </motion.div>
 
           {/* Desktop Menu */}
