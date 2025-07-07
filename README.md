@@ -20,19 +20,76 @@ Un portafolio moderno y responsive construido con las últimas tecnologías web.
 - **Iconos**: Lucide React
 - **Deployment**: Vercel
 
-## 📦 Instalación
+## 📦 Instalación Local
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/EstebanIM/miportafolio.git
+git clone https://github.com/tu-usuario/mi-portafolio.git
 
 # Instalar dependencias
-cd miportafolio
+cd mi-portafolio
 npm install
+
+# Copiar variables de entorno
+cp .env.example .env.local
 
 # Ejecutar en desarrollo
 npm run dev
 ```
+
+## 🚀 Deployment en Vercel
+
+### Opción 1: Desde GitHub (Recomendado)
+
+1. **Subir código a GitHub**:
+
+   ```bash
+   git add .
+   git commit -m "feat: initial portfolio setup"
+   git push origin main
+   ```
+
+2. **Conectar con Vercel**:
+   - Ve a [vercel.com](https://vercel.com)
+   - Haz clic en "New Project"
+   - Importa tu repositorio desde GitHub
+   - Configura las variables de entorno
+   - Haz clic en "Deploy"
+
+### Opción 2: Desde CLI
+
+```bash
+# Instalar Vercel CLI
+npm i -g vercel
+
+# Login en Vercel
+vercel login
+
+# Deploy
+vercel
+
+# Para producción
+vercel --prod
+```
+
+## 🔧 Variables de Entorno en Vercel
+
+En el dashboard de Vercel, añade estas variables:
+
+```env
+NEXT_PUBLIC_SITE_URL=https://tu-dominio.vercel.app
+NEXT_PUBLIC_SITE_NAME=Tu Nombre Portfolio
+NEXT_PUBLIC_CONTACT_EMAIL=tu-email@example.com
+NEXT_PUBLIC_GITHUB_URL=https://github.com/tu-usuario
+NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/in/tu-usuario
+```
+
+## 📊 Performance
+
+- **Lighthouse Score**: 100/100
+- **First Contentful Paint**: < 1.5s
+- **Largest Contentful Paint**: < 2.5s
+- **Cumulative Layout Shift**: < 0.1
 
 ## 🚀 Scripts Disponibles
 
@@ -60,71 +117,16 @@ src/
 └── data/            # Datos estáticos
 ```
 
-## 🎨 Personalización
+## 📧 Contacto
 
-### Colores
+Tu Nombre - [@tu_usuario](https://twitter.com/tu_usuario) - tu-email@example.com
 
-Los colores se definen en `src/app/globals.css` usando CSS variables:
+Project Link: [https://github.com/tu-usuario/mi-portafolio](https://github.com/tu-usuario/mi-portafolio)
 
-```css
-:root {
-  --primary: 240 5.9% 10%;
-  --secondary: 240 4.8% 95.9%;
-  /* ... más colores */
-}
-```
+---
 
-### Contenido
+⭐ ¡No olvides darle una estrella al repositorio si te ha sido útil!
 
-Actualiza el contenido en:
-
-- `src/data/projects.ts` - Proyectos
-- `src/data/skills.ts` - Habilidades
-- `src/data/experience.ts` - Experiencia laboral
-
-## 📊 Performance
-
-- **Lighthouse Score**: 100/100
-- **First Contentful Paint**: < 1.5s
-- **Largest Contentful Paint**: < 2.5s
-- **Cumulative Layout Shift**: < 0.1
-
-## 🔧 Configuración
-
-### Variables de Entorno
-
-Crea un archivo `.env.local`:
-
-```env
-NEXT_PUBLIC_SITE_URL=https://tu-dominio.com
-NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
-```
-
-### Metadatos SEO
-
-Actualiza los metadatos en `src/app/layout.tsx`:
-
-```typescript
-export const metadata: Metadata = {
-  title: 'Tu Nombre - Desarrollador Full Stack',
-  description: 'Tu descripción personalizada',
-  // ... más metadatos
-}
-```
-
-## 🚀 Deployment
-
-### Vercel (Recomendado)
-
-1. Conecta tu repositorio con Vercel
-2. La configuración se detecta automáticamente
-3. Deploy automático en cada push
-
-### Manual
-
-```bash
-npm run build
-npm run start
 ```
 
 ## 🤝 Contribución
@@ -148,3 +150,4 @@ Project Link: [https://github.com/EstebanIM/miportafolio]
 ---
 
 ⭐ ¡No olvides darle una estrella al repositorio si te ha sido útil!
+```
