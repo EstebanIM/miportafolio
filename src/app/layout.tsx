@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tu-dominio.vercel.app'
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Tu Nombre Portfolio'
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Mi Portafolio'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     template: '%s | Esteban Inzunza'
   },
   description: 'Desarrollador Front End especializado en React, Next.js y TypeScript. Creando experiencias web modernas y escalables.',
-  keywords: ['desarrollador', 'react', 'nextjs', 'typescript', 'frontend', 'fullstack'],
+  keywords: ['desarrollador', 'react', 'nextjs', 'typescript', 'frontend'],
   authors: [{ name: 'Esteban Inzunza' }],
   creator: 'Esteban Inzunza',
   openGraph: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: 'Esteban Inzunza - Desarrollador Front End',
     description: 'Desarrollador Front End especializado en React, Next.js y TypeScript.',
-    siteName: siteName,
+    siteName,
     images: [
       {
         url: `${siteUrl}/og-image.jpg`,
