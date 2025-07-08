@@ -42,11 +42,6 @@ export function Projects() {
               viewport={{ once: true }}
               className="bg-card rounded-lg border border-border/40 overflow-hidden hover:border-border/60 transition-colors"
             >
-              <div className="relative h-48 bg-muted">
-                <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-                  Imagen del proyecto
-                </div>
-              </div>
               
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>

@@ -3,18 +3,18 @@
 import { motion } from 'framer-motion'
 
 const skills = [
-  { name: 'React', level: 85, category: 'Frontend' },
+  { name: 'React', level: 80, category: 'Frontend' },
   { name: 'Next.js', level: 80, category: 'Frontend' },
   { name: 'TypeScript', level: 75, category: 'Frontend' },
-  { name: 'JavaScript', level: 90, category: 'Frontend' },
+  { name: 'JavaScript', level: 85, category: 'Frontend' },
   { name: 'HTML5', level: 95, category: 'Frontend' },
   { name: 'CSS3', level: 90, category: 'Frontend' },
   { name: 'Tailwind CSS', level: 85, category: 'Frontend' },
-  { name: 'Sass/SCSS', level: 80, category: 'Frontend' },
+  { name: 'Sass/SCSS', level: 85, category: 'Frontend' },
   { name: 'Git', level: 80, category: 'Tools' },
-  { name: 'Figma', level: 70, category: 'Tools' },
+  { name: 'Figma', level: 60, category: 'Tools' },
   { name: 'Responsive Design', level: 90, category: 'Design' },
-  { name: 'UI/UX Principles', level: 75, category: 'Design' },
+  { name: 'UI/UX Principles', level: 80, category: 'Design' },
 ]
 
 const categories = ['Frontend', 'Design', 'Tools']
