@@ -5,9 +5,11 @@ import { Mail, MapPin, Phone, Send, CheckCircle, AlertCircle } from 'lucide-reac
 import { Button } from '@/components/ui/button'
 import { useState, useRef } from 'react'
 import emailjs from '@emailjs/browser'
+import { useTranslations } from '@/hooks/useTranslations'
 
 export function Contact() {
   const ref = useRef(null)
+  const { t } = useTranslations()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -45,25 +47,25 @@ export function Contact() {
 
     // Validaciones del lado del cliente
     if (!formData.name.trim() || formData.name.length < 2) {
-      setErrorMessage('El nombre debe tener al menos 2 caracteres')
+      setErrorMessage(t('contact.form.error'))
       setStatus('error')
       return
     }
 
     if (!isValidEmail(formData.email)) {
-      setErrorMessage('Por favor, ingresa un email válido')
+      setErrorMessage(t('contact.form.error'))
       setStatus('error')
       return
     }
 
     if (!formData.message.trim() || formData.message.length < 10) {
-      setErrorMessage('El mensaje debe tener al menos 10 caracteres')
+      setErrorMessage(t('contact.form.error'))
       setStatus('error')
       return
     }
 
     if (containsSpamKeywords(formData.message) || containsSpamKeywords(formData.name)) {
-      setErrorMessage('El mensaje contiene contenido no permitido')
+      setErrorMessage(t('contact.form.error'))
       setStatus('error')
       return
     }
@@ -89,7 +91,7 @@ export function Contact() {
       setFormData({ name: '', email: '', message: '' })
     } catch (error) {
       console.error('Error sending email:', error)
-      setErrorMessage('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.')
+      setErrorMessage(t('contact.form.error'))
       setStatus('error')
     }
   }
@@ -136,9 +138,9 @@ export function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Contacto</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('contact.title')}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            ¿Tienes un proyecto en mente? ¡Hablemos y hagámoslo realidad!
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
@@ -150,15 +152,15 @@ export function Contact() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-semibold mb-6">Información de Contacto</h3>
+            <h3 className="text-2xl font-semibold mb-6">{t('contact.title')}</h3>
             
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center backdrop-blur-sm">
                 <Mail className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <p className="font-medium">Email</p>
-                <p className="text-muted-foreground">einzunza2@gmail.com</p>
+                <p className="font-medium">{t('contact.form.email')}</p>
+                <p className="text-muted-foreground">{t('contact.info.email')}</p>
               </div>
             </div>
 
@@ -178,15 +180,15 @@ export function Contact() {
               </div>
               <div>
                 <p className="font-medium">Ubicación</p>
-                <p className="text-muted-foreground">Concepción, Chile</p>
+                <p className="text-muted-foreground">{t('contact.info.location')}</p>
               </div>
             </div>
 
             {/* Información sobre privacidad */}
             <div className="mt-8 p-4 bg-muted/30 rounded-lg backdrop-blur-sm">
-              <h4 className="font-medium mb-2">📧 Sobre tu información</h4>
+              <h4 className="font-medium mb-2">{t('contact.privacy.title')}</h4>
               <p className="text-sm text-muted-foreground">
-                Tu email se usa únicamente para responder a tu mensaje. No compartimos tu información con terceros.
+                {t('contact.privacy.description')}
               </p>
             </div>
           </motion.div>
@@ -201,24 +203,24 @@ export function Contact() {
               <div className="text-center p-8 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800 backdrop-blur-sm">
                 <CheckCircle className="h-12 w-12 text-green-600 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-green-800 dark:text-green-400 mb-2">
-                  ¡Mensaje enviado!
+                  {t('contact.form.success')}
                 </h3>
                 <p className="text-green-600 dark:text-green-300">
-                  Gracias por contactarme. Te responderé pronto.
+                  {t('contact.form.successDescription')}
                 </p>
                 <Button 
                   variant="outline" 
                   onClick={() => setStatus('idle')} 
                   className="mt-4"
                 >
-                  Enviar otro mensaje
+                  {t('contact.form.sendAnother')}
                 </Button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Nombre completo *
+                    {t('contact.form.name')} *
                   </label>
                   <input
                     type="text"
@@ -226,7 +228,7 @@ export function Contact() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Tu nombre"
+                    placeholder={t('contact.form.namePlaceholder')}
                     className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background/80 backdrop-blur-sm"
                     required
                     minLength={2}
@@ -236,7 +238,7 @@ export function Contact() {
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email *
+                    {t('contact.form.email')} *
                   </label>
                   <input
                     type="email"
@@ -244,18 +246,18 @@ export function Contact() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="tu@email.com"
+                    placeholder={t('contact.form.emailPlaceholder')}
                     className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background/80 backdrop-blur-sm"
                     required
                   />
                   <p className="text-xs text-muted-foreground mt-1">
-                    Se usará para responderte
+                    {t('contact.helpers.emailHelper')}
                   </p>
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Mensaje *
+                    {t('contact.form.message')} *
                   </label>
                   <textarea
                     id="message"
@@ -263,14 +265,14 @@ export function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    placeholder="Cuéntame sobre tu proyecto..."
+                    placeholder={t('contact.form.messagePlaceholder')}
                     className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background/80 backdrop-blur-sm resize-none"
                     required
                     minLength={10}
                     maxLength={1000}
                   />
                   <p className="text-xs text-muted-foreground mt-1">
-                    {formData.message.length}/1000 caracteres
+                    {formData.message.length}/1000 {t('contact.helpers.charactersCount')}
                   </p>
                 </div>
 
@@ -293,12 +295,12 @@ export function Contact() {
                         transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                         className="w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2"
                       />
-                      Enviando...
+                      {t('contact.form.sending')}
                     </>
                   ) : (
                     <>
                       <Send className="h-4 w-4 mr-2" />
-                      Enviar Mensaje
+                      {t('contact.form.send')}
                     </>
                   )}
                 </Button>

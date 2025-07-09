@@ -1,10 +1,15 @@
+'use client'
+
 import { Github, Linkedin, Mail, Heart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Particles } from '@/components/ui/particles'
 import { ViewCounter } from '@/components/ui/view-counter'
 import { DownloadTracker } from '@/components/ui/download-tracker'
+import { useTranslations } from '@/hooks/useTranslations'
 
 export function Footer() {
+  const { t } = useTranslations()
+  
   return (
     <footer className="bg-muted/30 border-t border-border/40 relative overflow-hidden">
       {/* Partículas de fondo */}
@@ -20,7 +25,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p className="text-muted-foreground text-sm">
-              © 2025 Esteban Inzunza. Todos los derechos reservados.
+              {t('footer.copyright')}
             </p>
           </div>
 
@@ -50,7 +55,7 @@ export function Footer() {
         <div className="mt-4 pt-4 border-t border-border/40 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-center">
             <p className="text-muted-foreground text-xs flex items-center justify-center">
-              Hecho con <Heart className="h-3 w-3 mx-1 text-red-500 animate-pulse" /> usando Next.js y TypeScript
+              {t('footer.madeWith', { heart: <Heart className="h-3 w-3 mx-1 text-red-500 animate-pulse" /> })}
             </p>
           </div>
           

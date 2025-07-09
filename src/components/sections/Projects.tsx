@@ -3,31 +3,26 @@
 import { motion } from 'framer-motion'
 import { Github, ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { useTranslations } from '@/hooks/useTranslations'
 
-const projects = [
+const projectKeys = [
 	{
 		id: 1,
-		title: 'CarMotorFix',
-		description:
-			'Sistema de gestión integral para talleres mecánicos, que optimiza la administración de órdenes de trabajo, inventario y comunicación con clientes.',
+		key: 'carMotorFix',
 		technologies: ['React', 'Vite', 'Tailwind CSS', 'Node.js', 'Express'],
 		githubUrl: 'https://github.com/EstebanIM/CP_PTY4614_4_EQP_7',
 		featured: true,
 	},
 	{
 		id: 2,
-		title: 'Portfolio Personal',
-		description:
-			'Mi portafolio profesional desarrollado con Next.js, TypeScript y Tailwind CSS. Incluye modo oscuro, animaciones y formulario de contacto funcional.',
+		key: 'portfolio',
 		technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
 		githubUrl: 'https://github.com/EstebanIM/miportafolio',
 		featured: true,
 	},
 	{
 		id: 3,
-		title: 'Próximo Proyecto',
-		description:
-			'Actualmente trabajando en nuevos proyectos que estarán disponibles próximamente. ¡Mantente atento!',
+		key: 'upcoming',
 		technologies: ['React', 'TypeScript', 'Next.js'],
 		featured: false,
 		comingSoon: true,
@@ -35,6 +30,8 @@ const projects = [
 ]
 
 export function Projects() {
+	const { t } = useTranslations()
+
 	return (
 		<section id="projects" className="py-20 bg-muted/30">
 			<div className="container mx-auto px-4">
@@ -45,15 +42,14 @@ export function Projects() {
 					viewport={{ once: true }}
 					className="text-center mb-16"
 				>
-					<h2 className="text-3xl md:text-4xl font-bold mb-4">Proyectos</h2>
+					<h2 className="text-3xl md:text-4xl font-bold mb-4">{t('projects.title')}</h2>
 					<p className="text-muted-foreground max-w-2xl mx-auto">
-						Algunos de mis proyectos más destacados que demuestran mis habilidades
-						como desarrollador front-end
+						{t('projects.subtitle')}
 					</p>
 				</motion.div>
 
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-					{projects.map((project, index) => (
+					{projectKeys.map((project, index) => (
 						<motion.div
 							key={project.id}
 							initial={{ opacity: 0, y: 20 }}
@@ -67,7 +63,7 @@ export function Projects() {
 							{project.featured && (
 								<div className="bg-primary/10 px-3 py-1">
 									<span className="text-primary text-xs font-medium">
-										Destacado
+										{t('projects.featured')}
 									</span>
 								</div>
 							)}
@@ -75,16 +71,16 @@ export function Projects() {
 							<div className="p-6">
 								<div className="flex items-start justify-between mb-2">
 									<h3 className="text-xl font-semibold hover-glow">
-										{project.title}
+										{t(`projects.items.${project.key}.title`)}
 									</h3>
 									{project.comingSoon && (
 										<span className="text-xs bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300 px-2 py-1 rounded animate-pulse">
-											Próximamente
+											{t('projects.buttons.comingSoon')}
 										</span>
 									)}
 								</div>
 								<p className="text-muted-foreground mb-4">
-									{project.description}
+									{t(`projects.items.${project.key}.description`)}
 								</p>
 
 								<div className="flex flex-wrap gap-2 mb-4">
@@ -112,7 +108,7 @@ export function Projects() {
 												rel="noopener noreferrer"
 											>
 												<Github className="h-4 w-4 mr-2 group-hover:rotate-12 transition-transform" />
-												Código
+												{t('projects.buttons.viewCode')}
 											</a>
 										</Button>
 									</div>
@@ -130,7 +126,7 @@ export function Projects() {
 					className="text-center mt-12"
 				>
 					<p className="text-muted-foreground mb-4">
-						¿Interesado en ver más de mi trabajo?
+						{t('projects.interestedInMore')}
 					</p>
 					<Button
 						variant="outline"
@@ -143,7 +139,7 @@ export function Projects() {
 							rel="noopener noreferrer"
 						>
 							<Github className="h-4 w-4 mr-2 group-hover:rotate-12 transition-transform" />
-							Ver todos mis repositorios
+							{t('projects.viewAllRepos')}
 						</a>
 					</Button>
 				</motion.div>

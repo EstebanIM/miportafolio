@@ -5,19 +5,23 @@ import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme/theme-toggle'
+import { LanguageToggle } from '@/components/ui/language-toggle'
+import { useTranslation } from '@/contexts/LanguageContext'
 import { cn } from '@/lib/utils'
-
-const navItems = [
-	{ name: 'Inicio', href: '#hero' },
-	{ name: 'Sobre mí', href: '#about' },
-	{ name: 'Habilidades', href: '#skills' },
-	{ name: 'Proyectos', href: '#projects' },
-	{ name: 'Contacto', href: '#contact' },
-]
 
 export function Navigation() {
 	const [isOpen, setIsOpen] = useState(false)
 	const [scrolled, setScrolled] = useState(false)
+	const { t } = useTranslation()
+
+	const navItems = [
+		{ name: t('navigation.home'), href: '#hero' },
+		{ name: t('navigation.about'), href: '#about' },
+		{ name: t('navigation.experience'), href: '#experience' },
+		{ name: t('navigation.skills'), href: '#skills' },
+		{ name: t('navigation.projects'), href: '#projects' },
+		{ name: t('navigation.contact'), href: '#contact' },
+	]
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -59,11 +63,15 @@ export function Navigation() {
 								{item.name}
 							</a>
 						))}
-						<ThemeToggle />
+						<div className="flex items-center gap-2">
+							<LanguageToggle />
+							<ThemeToggle />
+						</div>
 					</div>
 
 					{/* Mobile Menu */}
 					<div className="flex items-center space-x-2 md:hidden">
+						<LanguageToggle />
 						<ThemeToggle />
 						<Button
 							variant="ghost"

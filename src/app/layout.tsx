@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme/theme-provider'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 import { SmoothScroll } from '@/components/ui/smooth-scroll'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { ReadingProgress } from '@/components/ui/reading-progress'
@@ -88,19 +89,21 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange={false}
-        >
-          <ThemeTransition />
-          <SmoothScroll />
-          <ScrollProgress />
-          <ReadingProgress />
-          <ScrollToTop />
-          {children}
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange={false}
+          >
+            <ThemeTransition />
+            <SmoothScroll />
+            <ScrollProgress />
+            <ReadingProgress />
+            <ScrollToTop />
+            {children}
+          </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   )

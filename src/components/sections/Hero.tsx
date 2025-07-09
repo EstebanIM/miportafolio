@@ -7,10 +7,12 @@ import { Particles } from '@/components/ui/particles'
 import { useState, useRef, useEffect } from 'react'
 import { trackCVDownload, trackPageView } from '@/lib/analytics'
 import { ViewCounter } from '@/components/ui/view-counter'
+import { useTranslation } from '@/contexts/LanguageContext'
 
 export function Hero() {
   const [showCvOptions, setShowCvOptions] = useState(false)
   const ref = useRef(null)
+  const { t } = useTranslation()
   
   // Track page view on mount
   useEffect(() => {
@@ -83,7 +85,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Esteban Inzunza
+            {t('hero.title')}
           </motion.h1>
           
           <motion.p
@@ -92,9 +94,19 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Desarrollador Front End especializado en{' '}
-            <span className="text-primary font-semibold">React</span> y{' '}
-            <span className="text-primary font-semibold">Next.js</span>
+            {t('hero.subtitle').split('{react}').map((part, index) => (
+              <span key={index}>
+                {part}
+                {index === 0 && <span className="text-primary font-semibold">React</span>}
+              </span>
+            )).map((element, index) => (
+              <span key={index}>
+                {element}
+                {index === 0 && t('hero.subtitle').includes('{nextjs}') && 
+                  <span> y <span className="text-primary font-semibold">Next.js</span></span>
+                }
+              </span>
+            ))}
           </motion.p>
           
           <motion.div
@@ -105,7 +117,7 @@ export function Hero() {
           >
             <Button size="lg" className="group" asChild>
               <a href="#projects">
-                Ver Proyectos
+                {t('hero.cta.projects')}
                 <motion.div
                   className="ml-2"
                   whileHover={{ x: 5 }}
@@ -124,7 +136,7 @@ export function Hero() {
                 className="group"
               >
                 <Download className="h-4 w-4 mr-2" />
-                Descargar CV
+                {t('hero.cta.downloadCV')}
                 <motion.div
                   className="ml-2"
                   animate={{ rotate: showCvOptions ? 180 : 0 }}
@@ -148,7 +160,7 @@ export function Hero() {
                     onClick={() => downloadCV('es')}
                     className="w-full justify-start mb-1"
                   >
-                    🇪🇸 CV en Español
+                    {t('hero.cta.cvSpanish')}
                   </Button>
                   <Button
                     variant="ghost"
@@ -156,7 +168,7 @@ export function Hero() {
                     onClick={() => downloadCV('en')}
                     className="w-full justify-start"
                   >
-                    🇺🇸 CV in English
+                    {t('hero.cta.cvEnglish')}
                   </Button>
                 </motion.div>
               )}
@@ -172,19 +184,19 @@ export function Hero() {
             <Button variant="ghost" size="icon" asChild>
               <a href="https://github.com/EstebanIM" target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
+                <span className="sr-only">{t('hero.social.github')}</span>
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
               <a href="https://linkedin.com/in/einzunza2" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
+                <span className="sr-only">{t('hero.social.linkedin')}</span>
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
               <a href="mailto:einzunza2@gmail.com">
                 <Mail className="h-5 w-5" />
-                <span className="sr-only">Email</span>
+                <span className="sr-only">{t('hero.social.email')}</span>
               </a>
             </Button>
           </motion.div>

@@ -3,25 +3,28 @@
 import { motion } from 'framer-motion'
 import { PageTransition } from '@/components/ui/page-transition'
 import { SectionDivider } from '@/components/ui/section-divider'
+import { useTranslations } from '@/hooks/useTranslations'
 
 const skills = [
-	{ name: 'React', level: 80, category: 'Frontend' },
-	{ name: 'Next.js', level: 80, category: 'Frontend' },
-	{ name: 'TypeScript', level: 75, category: 'Frontend' },
-	{ name: 'JavaScript', level: 85, category: 'Frontend' },
-	{ name: 'HTML5', level: 95, category: 'Frontend' },
-	{ name: 'CSS3', level: 90, category: 'Frontend' },
-	{ name: 'Tailwind CSS', level: 85, category: 'Frontend' },
-	{ name: 'Sass/SCSS', level: 85, category: 'Frontend' },
-	{ name: 'Git', level: 80, category: 'Tools' },
-	{ name: 'Figma', level: 60, category: 'Tools' },
-	{ name: 'Responsive Design', level: 90, category: 'Design' },
-	{ name: 'UI/UX Principles', level: 80, category: 'Design' },
+	{ name: 'React', level: 80, category: 'frontend' },
+	{ name: 'Next.js', level: 80, category: 'frontend' },
+	{ name: 'TypeScript', level: 75, category: 'frontend' },
+	{ name: 'JavaScript', level: 85, category: 'frontend' },
+	{ name: 'HTML5', level: 95, category: 'frontend' },
+	{ name: 'CSS3', level: 90, category: 'frontend' },
+	{ name: 'Tailwind CSS', level: 85, category: 'frontend' },
+	{ name: 'Sass/SCSS', level: 85, category: 'frontend' },
+	{ name: 'Git', level: 80, category: 'tools' },
+	{ name: 'Figma', level: 60, category: 'tools' },
+	{ name: 'Responsive Design', level: 90, category: 'design' },
+	{ name: 'UI/UX Principles', level: 80, category: 'design' },
 ]
 
-const categories = ['Frontend', 'Design', 'Tools']
+const categoryKeys = ['frontend', 'design', 'tools']
 
 export function Skills() {
+	const { t } = useTranslations()
+
 	return (
 		<>
 			<section id="skills" className="py-20">
@@ -29,29 +32,28 @@ export function Skills() {
 					<PageTransition delay={0.2}>
 						<div className="text-center mb-16">
 							<h2 className="text-3xl md:text-4xl font-bold mb-4">
-								Habilidades Técnicas
+								{t('skills.title')}
 							</h2>
 							<p className="text-muted-foreground max-w-2xl mx-auto">
-								Tecnologías y herramientas que domino para crear experiencias web
-								excepcionales
+								{t('skills.subtitle')}
 							</p>
 						</div>
 					</PageTransition>
 
 					<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-						{categories.map((category, categoryIndex) => (
+						{categoryKeys.map((categoryKey, categoryIndex) => (
 							<PageTransition
-								key={category}
+								key={categoryKey}
 								delay={0.4 + categoryIndex * 0.1}
 								direction={categoryIndex % 2 === 0 ? 'left' : 'right'}
 							>
 								<div className="space-y-4 hover-lift p-4 rounded-lg transition-all duration-300 hover:bg-muted/30">
 									<h3 className="text-xl font-semibold text-primary hover-glow">
-										{category}
+										{t(`skills.categories.${categoryKey}`)}
 									</h3>
 									<div className="space-y-3">
 										{skills
-											.filter((skill) => skill.category === category)
+											.filter((skill) => skill.category === categoryKey)
 											.map((skill, skillIndex) => (
 												<PageTransition
 													key={skill.name}

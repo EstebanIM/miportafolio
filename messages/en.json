@@ -1,0 +1,186 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Esteban Inzunza",
+    "subtitle": "Front End Developer specialized in {react} and {nextjs}",
+    "description": "Creating modern and attractive web interfaces with the latest technologies",
+    "cta": {
+      "projects": "View Projects",
+      "downloadCV": "Download CV",
+      "cvSpanish": "🇪🇸 CV en Español",
+      "cvEnglish": "🇺🇸 CV in English"
+    },
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Learn more about my passion for development and my professional approach",
+    "description": "I'm a front-end developer passionate about creating exceptional web experiences. My focus is on writing clean code, following best practices, and staying updated with the latest technologies.",
+    "highlights": {
+      "cleanCode": {
+        "title": "Clean Code",
+        "description": "Clean and well-structured code following best practices"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Always looking for new technologies and creative approaches"
+      },
+      "collaboration": {
+        "title": "Collaboration",
+        "description": "Effective teamwork in multidisciplinary environments"
+      },
+      "dedication": {
+        "title": "Dedication",
+        "description": "Committed to excellence in every project"
+      }
+    }
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "subtitle": "My professional journey and the projects that have marked my growth as a developer",
+    "types": {
+      "work": "Work Experience",
+      "internship": "Professional Internship"
+    },
+    "sections": {
+      "responsibilities": "Responsibilities",
+      "technologies": "Technologies",
+      "achievements": "Achievements"
+    },
+    "positions": {
+      "houseman": {
+        "title": "Houseman",
+        "company": "Vista Mirage Resort",
+        "location": "Palm Springs, USA",
+        "period": "December 2024 - April 2025",
+        "description": [
+          "Participated in the Work and Travel program as Houseman at Vista Mirage Resort",
+          "Supported the housekeeping team in an international environment",
+          "Significantly improved my English and teamwork skills"
+        ],
+        "achievements": [
+          "International experience in the United States",
+          "Development of English communication skills",
+          "Adaptation to multicultural environment",
+          "Efficient work under pressure"
+        ]
+      },
+      "engineer": {
+        "title": "Computer Engineer",
+        "company": "BioGym Store Concepción",
+        "location": "Concepción, Chile",
+        "period": "September 2024 - December 2024",
+        "description": [
+          "Improved the company's online visibility through website redesign and updates",
+          "Designed and implemented an inventory system with React.js that optimized warehouse organization",
+          "Developed modern web solutions to improve user experience"
+        ],
+        "achievements": [
+          "Increased company's online visibility",
+          "40% optimization in inventory management",
+          "Implementation of modern and responsive interface",
+          "Significant improvement in user experience"
+        ]
+      }
+    },
+    "cta": {
+      "title": "Interested in working with me?",
+      "description": "I'm always open to new opportunities and challenges that allow me to continue growing professionally.",
+      "button": "Contact Me"
+    }
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "subtitle": "Technologies and tools I master to create exceptional web experiences",
+    "categories": {
+      "frontend": "Frontend",
+      "design": "Design",
+      "tools": "Tools"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Some of my most outstanding projects that demonstrate my skills and creativity",
+    "viewAllRepos": "View all my repositories",
+    "interestedInMore": "Interested in seeing more of my work?",
+    "items": {
+      "carMotorFix": {
+        "title": "CarMotorFix",
+        "description": "Comprehensive management system for auto repair shops, optimizing work order administration, inventory, and customer communication."
+      },
+      "portfolio": {
+        "title": "Personal Portfolio",
+        "description": "My professional portfolio developed with Next.js, TypeScript and Tailwind CSS. Includes dark mode, animations and functional contact form."
+      },
+      "upcoming": {
+        "title": "Upcoming Project",
+        "description": "Currently working on new projects that will be available soon. Stay tuned!"
+      }
+    },
+    "buttons": {
+      "viewCode": "View Code",
+      "liveDemo": "Live Demo",
+      "comingSoon": "Coming Soon"
+    },
+    "featured": "Featured"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "subtitle": "Have a project in mind? Let's talk!",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "namePlaceholder": "Your full name",
+      "emailPlaceholder": "your@email.com",
+      "messagePlaceholder": "Tell me about your project...",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "successDescription": "Thank you for contacting me. I'll respond soon.",
+      "sendAnother": "Send another message",
+      "error": "Error sending message"
+    },
+    "info": {
+      "email": "einzunza2@gmail.com",
+      "location": "Concepción, Chile",
+      "availability": "Available for projects"
+    },
+    "privacy": {
+      "title": "📧 About your information",
+      "description": "Your email is used only to respond to your message. We do not share your information with third parties."
+    },
+    "helpers": {
+      "emailHelper": "Will be used to respond to you",
+      "charactersCount": "characters"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Esteban Inzunza. All rights reserved.",
+    "madeWith": "Made with {heart} using Next.js and TypeScript",
+    "analytics": {
+      "views": "Page Views",
+      "downloads": "CV Downloads"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "readMore": "Read more",
+    "close": "Close",
+    "next": "Next",
+    "previous": "Previous"
+  }
+}

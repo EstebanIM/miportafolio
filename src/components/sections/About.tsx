@@ -6,32 +6,11 @@ import { PageTransition } from '@/components/ui/page-transition'
 import { SectionDivider } from '@/components/ui/section-divider'
 import { SectionProgress } from '@/components/ui/section-progress'
 import { useRef } from 'react'
-
-const highlights = [
-	{
-		icon: Code,
-		title: 'Clean Code',
-		description: 'Código limpio y bien estructurado siguiendo las mejores prácticas',
-	},
-	{
-		icon: Lightbulb,
-		title: 'Innovación',
-		description: 'Siempre buscando nuevas tecnologías y enfoques creativos',
-	},
-	{
-		icon: Users,
-		title: 'Colaboración',
-		description: 'Trabajo efectivo en equipos multidisciplinarios',
-	},
-	{
-		icon: Coffee,
-		title: 'Dedicación',
-		description: 'Comprometido con la excelencia en cada proyecto',
-	},
-]
+import { useTranslations } from '@/hooks/useTranslations'
 
 export function About() {
 	const ref = useRef(null)
+	const { t } = useTranslations()
 
 	// Parallax muy sutil para About
 	const { scrollYProgress } = useScroll({
@@ -42,6 +21,29 @@ export function About() {
 	// Efectos muy sutiles
 	const backgroundY = useTransform(scrollYProgress, [0, 1], [0, 50])
 	const floatingY = useTransform(scrollYProgress, [0, 1], [0, -25])
+
+	const highlights = [
+		{
+			icon: Code,
+			title: t('about.highlights.cleanCode.title'),
+			description: t('about.highlights.cleanCode.description'),
+		},
+		{
+			icon: Lightbulb,
+			title: t('about.highlights.innovation.title'),
+			description: t('about.highlights.innovation.description'),
+		},
+		{
+			icon: Users,
+			title: t('about.highlights.collaboration.title'),
+			description: t('about.highlights.collaboration.description'),
+		},
+		{
+			icon: Coffee,
+			title: t('about.highlights.dedication.title'),
+			description: t('about.highlights.dedication.description'),
+		},
+	]
 
 	return (
 		<>
@@ -63,9 +65,9 @@ export function About() {
 				<div className="container mx-auto px-4 relative z-10">
 					<PageTransition delay={0.2}>
 						<div className="text-center mb-16">
-							<h2 className="text-3xl md:text-4xl font-bold mb-4">Sobre Mí</h2>
+							<h2 className="text-3xl md:text-4xl font-bold mb-4">{t('about.title')}</h2>
 							<p className="text-muted-foreground max-w-2xl mx-auto">
-								Desarrollador apasionado por crear experiencias digitales excepcionales
+								{t('about.subtitle')}
 							</p>
 						</div>
 					</PageTransition>
@@ -74,14 +76,7 @@ export function About() {
 						<PageTransition direction="left" delay={0.4}>
 							<div>
 								<p className="text-lg mb-6 leading-relaxed">
-									Soy un desarrollador front-end enfocado en crear experiencias de usuario
-									excepcionales. Me especializo en React, Next.js y TypeScript, siempre
-									buscando las mejores prácticas para escribir código limpio y mantenible.
-								</p>
-								<p className="text-muted-foreground mb-6">
-									Mi pasión por el desarrollo frontend me impulsa a mantenerme actualizado
-									con las últimas tecnologías y tendencias del diseño web, creando interfaces
-									modernas y accesibles.
+									{t('about.description')}
 								</p>
 							</div>
 						</PageTransition>

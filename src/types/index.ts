@@ -17,11 +17,15 @@ export interface Skill {
 }
 
 export interface Experience {
+  id: string
+  title: string
   company: string
-  position: string
-  duration: string
-  description: string
-  technologies: string[]
+  location: string
+  period: string
+  type: 'work' | 'internship'
+  description: string[]
+  technologies?: string[]
+  achievements?: string[]
 }
 
 export interface ContactForm {

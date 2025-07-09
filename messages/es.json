@@ -1,0 +1,186 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Esteban Inzunza",
+    "subtitle": "Desarrollador Front End especializado en {react} y {nextjs}",
+    "description": "Creando interfaces web modernas y atractivas con las últimas tecnologías",
+    "cta": {
+      "projects": "Ver Proyectos",
+      "downloadCV": "Descargar CV",
+      "cvSpanish": "🇪🇸 CV en Español",
+      "cvEnglish": "🇺🇸 CV in English"
+    },
+    "social": {
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "email": "Email"
+    }
+  },
+  "about": {
+    "title": "Sobre mí",
+    "subtitle": "Conoce más sobre mi pasión por el desarrollo y mi enfoque profesional",
+    "description": "Soy un desarrollador front-end apasionado por crear experiencias web excepcionales. Mi enfoque se centra en escribir código limpio, seguir las mejores prácticas y mantenerme actualizado con las últimas tecnologías.",
+    "highlights": {
+      "cleanCode": {
+        "title": "Código Limpio",
+        "description": "Código limpio y bien estructurado siguiendo las mejores prácticas"
+      },
+      "innovation": {
+        "title": "Innovación",
+        "description": "Siempre buscando nuevas tecnologías y enfoques creativos"
+      },
+      "collaboration": {
+        "title": "Colaboración",
+        "description": "Trabajo efectivo en equipos multidisciplinarios"
+      },
+      "dedication": {
+        "title": "Dedicación",
+        "description": "Comprometido con la excelencia en cada proyecto"
+      }
+    }
+  },
+  "experience": {
+    "title": "Experiencia Profesional",
+    "subtitle": "Mi trayectoria profesional y los proyectos que han marcado mi crecimiento como desarrollador",
+    "types": {
+      "work": "Experiencia Laboral",
+      "internship": "Práctica Profesional"
+    },
+    "sections": {
+      "responsibilities": "Responsabilidades",
+      "technologies": "Tecnologías",
+      "achievements": "Logros"
+    },
+    "positions": {
+      "houseman": {
+        "title": "Houseman",
+        "company": "Vista Mirage Resort",
+        "location": "Palm Springs, EE.UU.",
+        "period": "Diciembre 2024 - Abril 2025",
+        "description": [
+          "Participé en el programa Work and Travel como Houseman en Vista Mirage Resort",
+          "Apoyé al equipo de housekeeping en un entorno internacional",
+          "Mejoré significativamente mis habilidades en inglés y trabajo en equipo"
+        ],
+        "achievements": [
+          "Experiencia internacional en Estados Unidos",
+          "Desarrollo de habilidades de comunicación en inglés",
+          "Adaptación a entorno multicultural",
+          "Trabajo eficiente bajo presión"
+        ]
+      },
+      "engineer": {
+        "title": "Ingeniero Informático",
+        "company": "BioGym Store Concepción",
+        "location": "Concepción, Chile",
+        "period": "Septiembre 2024 - Diciembre 2024",
+        "description": [
+          "Mejoré la visibilidad online de la empresa mediante el rediseño y actualización del sitio web",
+          "Diseñé e implementé un sistema de inventario con React.js que optimizó la organización del almacén",
+          "Desarrollé soluciones web modernas para mejorar la experiencia del usuario"
+        ],
+        "achievements": [
+          "Incremento de la visibilidad online de la empresa",
+          "Optimización del 40% en la gestión de inventario",
+          "Implementación de interfaz moderna y responsive",
+          "Mejora significativa en la experiencia del usuario"
+        ]
+      }
+    },
+    "cta": {
+      "title": "¿Interesado en trabajar conmigo?",
+      "description": "Estoy siempre abierto a nuevas oportunidades y desafíos que me permitan seguir creciendo profesionalmente.",
+      "button": "Contáctame"
+    }
+  },
+  "skills": {
+    "title": "Habilidades Técnicas",
+    "subtitle": "Tecnologías y herramientas que domino para crear experiencias web excepcionales",
+    "categories": {
+      "frontend": "Frontend",
+      "design": "Diseño",
+      "tools": "Herramientas"
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Algunos de mis proyectos más destacados que demuestran mis habilidades y creatividad",
+    "viewAllRepos": "Ver todos mis repositorios",
+    "interestedInMore": "¿Interesado en ver más de mi trabajo?",
+    "items": {
+      "carMotorFix": {
+        "title": "CarMotorFix",
+        "description": "Sistema de gestión integral para talleres mecánicos, que optimiza la administración de órdenes de trabajo, inventario y comunicación con clientes."
+      },
+      "portfolio": {
+        "title": "Portfolio Personal",
+        "description": "Mi portafolio profesional desarrollado con Next.js, TypeScript y Tailwind CSS. Incluye modo oscuro, animaciones y formulario de contacto funcional."
+      },
+      "upcoming": {
+        "title": "Próximo Proyecto",
+        "description": "Actualmente trabajando en nuevos proyectos que estarán disponibles próximamente. ¡Mantente atento!"
+      }
+    },
+    "buttons": {
+      "viewCode": "Ver Código",
+      "liveDemo": "Demo en Vivo",
+      "comingSoon": "Próximamente"
+    },
+    "featured": "Destacado"
+  },
+  "contact": {
+    "title": "Contáctame",
+    "subtitle": "¿Tienes un proyecto en mente? ¡Hablemos!",
+    "form": {
+      "name": "Nombre",
+      "email": "Email",
+      "message": "Mensaje",
+      "namePlaceholder": "Tu nombre completo",
+      "emailPlaceholder": "tu@email.com",
+      "messagePlaceholder": "Cuéntame sobre tu proyecto...",
+      "send": "Enviar Mensaje",
+      "sending": "Enviando...",
+      "success": "¡Mensaje enviado exitosamente!",
+      "successDescription": "Gracias por contactarme. Te responderé pronto.",
+      "sendAnother": "Enviar otro mensaje",
+      "error": "Error al enviar el mensaje"
+    },
+    "info": {
+      "email": "einzunza2@gmail.com",
+      "location": "Concepción, Chile",
+      "availability": "Disponible para proyectos"
+    },
+    "privacy": {
+      "title": "📧 Sobre tu información",
+      "description": "Tu email se usa únicamente para responder a tu mensaje. No compartimos tu información con terceros."
+    },
+    "helpers": {
+      "emailHelper": "Se usará para responderte",
+      "charactersCount": "caracteres"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 Esteban Inzunza. Todos los derechos reservados.",
+    "madeWith": "Hecho con {heart} usando Next.js y TypeScript",
+    "analytics": {
+      "views": "Visualizaciones",
+      "downloads": "Descargas de CV"
+    }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "readMore": "Leer más",
+    "close": "Cerrar",
+    "next": "Siguiente",
+    "previous": "Anterior"
+  }
+}
