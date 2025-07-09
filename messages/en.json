@@ -5,6 +5,7 @@
     "experience": "Experience",
     "skills": "Skills",
     "projects": "Projects",
+    "interactive": "Interactive",
     "contact": "Contact"
   },
   "hero": {
@@ -165,13 +166,40 @@
       "emailHelper": "Will be used to respond to you",
       "charactersCount": "characters"
     }
-  },
-  "footer": {
+  },    "footer": {
     "copyright": "© 2025 Esteban Inzunza. All rights reserved.",
     "madeWith": "Made with {heart} using Next.js and TypeScript",
     "analytics": {
       "views": "Page Views",
       "downloads": "CV Downloads"
+    }
+  },
+  "interactive": {
+    "title": "Interactive Elements",
+    "subtitle": "Experience advanced technologies and unique elements that demonstrate my skills in modern frontend development",
+    "elements": {
+      "playground": {
+        "title": "Code Playground",
+        "description": "Interactive JavaScript code editor with real-time execution and predefined examples."
+      },
+      "resume": {
+        "title": "Interactive Resume",
+        "description": "Navigable curriculum vitae with animations, skill charts and smooth transitions."
+      },
+      "3d": {
+        "title": "3D Environment",
+        "description": "Interactive three-dimensional scene with animated elements, particles and camera controls."
+      }
+    },
+    "buttons": {
+      "explore": "Explore",
+      "hide": "Hide",
+      "close": "Close"
+    },
+    "cta": {
+      "title": "Do you like interactive experiences?",
+      "description": "These elements demonstrate my ability to create modern interfaces and unique user experiences using the latest web technologies.",
+      "button": "Create something together"
     }
   },
   "common": {

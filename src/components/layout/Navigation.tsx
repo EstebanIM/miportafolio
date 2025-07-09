@@ -20,6 +20,7 @@ export function Navigation() {
 		{ name: t('navigation.experience'), href: '#experience' },
 		{ name: t('navigation.skills'), href: '#skills' },
 		{ name: t('navigation.projects'), href: '#projects' },
+		{ name: t('navigation.interactive'), href: '#interactive' },
 		{ name: t('navigation.contact'), href: '#contact' },
 	]
 

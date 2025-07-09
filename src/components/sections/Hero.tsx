@@ -94,19 +94,19 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {t('hero.subtitle').split('{react}').map((part, index) => (
-              <span key={index}>
-                {part}
-                {index === 0 && <span className="text-primary font-semibold">React</span>}
-              </span>
-            )).map((element, index) => (
-              <span key={index}>
-                {element}
-                {index === 0 && t('hero.subtitle').includes('{nextjs}') && 
-                  <span> y <span className="text-primary font-semibold">Next.js</span></span>
-                }
-              </span>
-            ))}
+            {t('hero.subtitle').includes('especializado') ? (
+              <>
+                Desarrollador Front End con experiencia en{' '}
+                <span className="text-primary font-semibold">React</span> y{' '}
+                <span className="text-primary font-semibold">Next.js</span>
+              </>
+            ) : (
+              <>
+                Front End Developer with experience in{' '}
+                <span className="text-primary font-semibold">React</span> and{' '}
+                <span className="text-primary font-semibold">Next.js</span>
+              </>
+            )}
           </motion.p>
           
           <motion.div

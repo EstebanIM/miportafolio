@@ -3,6 +3,7 @@ import { About } from '@/components/sections/About'
 import { Experience } from '@/components/sections/Experience'
 import { Skills } from '@/components/sections/Skills'
 import { Projects } from '@/components/sections/Projects'
+import { InteractiveElementsWrapper } from '@/components/interactive/InteractiveElementsWrapper'
 import { Contact } from '@/components/sections/Contact'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
@@ -16,6 +17,7 @@ export default function Home() {
       <Experience />
       <Skills />
       <Projects />
+      <InteractiveElementsWrapper />
       <Contact />
       <Footer />
     </main>

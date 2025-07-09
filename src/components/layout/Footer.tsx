@@ -55,7 +55,15 @@ export function Footer() {
         <div className="mt-4 pt-4 border-t border-border/40 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-center">
             <p className="text-muted-foreground text-xs flex items-center justify-center">
-              {t('footer.madeWith', { heart: <Heart className="h-3 w-3 mx-1 text-red-500 animate-pulse" /> })}
+              {t('footer.madeWith').includes('Hecho') ? (
+                <>
+                  Hecho con <Heart className="h-3 w-3 mx-1 text-red-500 animate-pulse" /> usando Next.js y TypeScript
+                </>
+              ) : (
+                <>
+                  Made with <Heart className="h-3 w-3 mx-1 text-red-500 animate-pulse" /> using Next.js and TypeScript
+                </>
+              )}
             </p>
           </div>
           
