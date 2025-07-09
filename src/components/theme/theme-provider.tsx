@@ -1,82 +1,41 @@
 'use client'
 
 import * as React from 'react'
+import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import { type ThemeProviderProps } from 'next-themes'
+import { motion, AnimatePresence } from 'framer-motion'
 
-type Theme = 'dark' | 'light' | 'system'
-
-type ThemeProviderProps = {
-  children: React.ReactNode
-  defaultTheme?: Theme
-  storageKey?: string
-  attribute?: string
-  defaultColorScheme?: string
-  enableSystem?: boolean
-  disableTransitionOnChange?: boolean
-}
-
-type ThemeProviderState = {
-  theme: Theme
-  setTheme: (theme: Theme) => void
-}
-
-const initialState: ThemeProviderState = {
-  theme: 'system',
-  setTheme: () => null,
-}
-
-const ThemeProviderContext = React.createContext<ThemeProviderState>(initialState)
-
-export function ThemeProvider({
-  children,
-  defaultTheme = 'system',
-  storageKey = 'ui-theme',
-  attribute = 'class',
-  defaultColorScheme = 'dark',
-  enableSystem = true,
-  disableTransitionOnChange = false,
-  ...props
-}: ThemeProviderProps) {
-  const [theme, setThemeState] = React.useState<Theme>(
-    () => (typeof window !== 'undefined' && localStorage.getItem(storageKey)) as Theme || defaultTheme
-  )
+export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+  const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
-    const root = window.document.documentElement
+    setMounted(true)
+  }, [])
 
-    root.classList.remove('light', 'dark')
-
-    if (theme === 'system' && enableSystem) {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light'
-
-      root.classList.add(systemTheme)
-      return
-    }
-
-    root.classList.add(theme)
-  }, [theme, enableSystem])
-
-  const value = {
-    theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme)
-      setThemeState(theme)
-    },
+  if (!mounted) {
+    return null
   }
 
   return (
-    <ThemeProviderContext.Provider {...props} value={value}>
-      {children}
-    </ThemeProviderContext.Provider>
+    <NextThemesProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange={false}
+      {...props}
+    >
+      <AnimatePresence mode="wait">
+        <motion.div
+          key="theme-wrapper"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="theme-transition-wrapper"
+        >
+          {children}
+        </motion.div>
+      </AnimatePresence>
+    </NextThemesProvider>
   )
-}
-
-export const useTheme = () => {
-  const context = React.useContext(ThemeProviderContext)
-
-  if (context === undefined)
-    throw new Error('useTheme must be used within a ThemeProvider')
-
-  return context
 }

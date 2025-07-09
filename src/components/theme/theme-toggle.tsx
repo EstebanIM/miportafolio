@@ -1,9 +1,16 @@
 'use client'
 
 import * as React from 'react'
-import { Moon, Sun } from 'lucide-react'
-import { useTheme } from './theme-provider'
+import { Moon, Sun, Monitor } from 'lucide-react'
+import { useTheme } from 'next-themes'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
@@ -14,23 +21,111 @@ export function ThemeToggle() {
   }, [])
 
   if (!mounted) {
-    return (
-      <Button variant="ghost" size="icon">
-        <Sun className="h-[1.2rem] w-[1.2rem]" />
-      </Button>
-    )
+    return null
+  }
+
+  const handleThemeChange = (newTheme: string) => {
+    // Add theme transition class to body
+    document.body.classList.add('theme-transitioning')
+
+    // Apply theme change
+    setTheme(newTheme)
+
+    // Remove transition class after animation
+    setTimeout(() => {
+      document.body.classList.remove('theme-transitioning')
+    }, 300)
+  }
+
+  const getThemeIcon = () => {
+    switch (theme) {
+      case 'light':
+        return <Sun className="h-4 w-4" />
+      case 'dark':
+        return <Moon className="h-4 w-4" />
+      default:
+        return <Monitor className="h-4 w-4" />
+    }
   }
 
   return (
-    <Button
-      variant="ghost"
-      size="icon"
-      onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      className="relative"
-    >
-      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="sr-only">Cambiar tema</span>
-    </Button>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          variant="outline"
+          size="icon"
+          className="relative overflow-hidden group"
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={theme}
+              initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+              animate={{ rotate: 0, opacity: 1, scale: 1 }}
+              exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
+              transition={{ duration: 0.2, ease: 'easeInOut' }}
+            >
+              {getThemeIcon()}
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Ripple effect background */}
+          <motion.div
+            className="absolute inset-0 bg-primary/10 rounded-full"
+            initial={{ scale: 0, opacity: 0 }}
+            whileTap={{ scale: 2, opacity: 0.3 }}
+            transition={{ duration: 0.3 }}
+          />
+
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent
+        align="end"
+        className="theme-dropdown"
+      >
+        <DropdownMenuItem
+          onClick={() => handleThemeChange('light')}
+          className="cursor-pointer"
+        >
+          <motion.div
+            className="flex items-center gap-2"
+            whileHover={{ x: 5 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <Sun className="h-4 w-4" />
+            Light
+          </motion.div>
+        </DropdownMenuItem>
+
+        <DropdownMenuItem
+          onClick={() => handleThemeChange('dark')}
+          className="cursor-pointer"
+        >
+          <motion.div
+            className="flex items-center gap-2"
+            whileHover={{ x: 5 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <Moon className="h-4 w-4" />
+            Dark
+          </motion.div>
+        </DropdownMenuItem>
+
+        <DropdownMenuItem
+          onClick={() => handleThemeChange('system')}
+          className="cursor-pointer"
+        >
+          <motion.div
+            className="flex items-center gap-2"
+            whileHover={{ x: 5 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          >
+            <Monitor className="h-4 w-4" />
+            System
+          </motion.div>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }

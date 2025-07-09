@@ -56,6 +56,28 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Smooth scrolling for the entire page */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
 }
 
 /* Hover Effects */
@@ -152,6 +174,61 @@
     opacity: 0.1;
     transition: all 0s;
   }
+
+  /* Smooth section transitions */
+  .section-transition {
+    @apply transform transition-all duration-700 ease-out;
+  }
+  
+  .section-transition-enter {
+    @apply opacity-0 translate-y-10;
+  }
+  
+  .section-transition-enter-active {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Page transition effects */
+  .page-transition {
+    @apply transition-all duration-500 ease-in-out;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  .slide-down {
+    animation: slideDown 0.6s ease-out forwards;
+  }
+  
+  .slide-left {
+    animation: slideLeft 0.6s ease-out forwards;
+  }
+  
+  .slide-right {
+    animation: slideRight 0.6s ease-out forwards;
+  }
+
+  /* Progress indicators */
+  .progress-bar {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .progress-section {
+    @apply transition-all duration-500 ease-out;
+  }
+  
+  .progress-indicator {
+    @apply transition-all duration-200 ease-out;
+  }
+  
+  .progress-indicator:hover {
+    @apply transform scale-110;
+  }
 }
 
 /* Animaciones personalizadas */
@@ -165,18 +242,34 @@
   50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6); }
 }
 
-@keyframes ripple {
-  0% {
-    transform: scale(0);
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 0.3;
-  }
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes progressFill {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
 }
 
 .animate-float {
@@ -187,6 +280,192 @@
   animation: glow 2s ease-in-out infinite;
 }
 
-.animate-ripple {
-  animation: ripple 600ms ease-out;
+/* Ripple effect mejorado */
+.ripple-effect {
+  @apply relative overflow-hidden;
+}
+
+.ripple-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease-out;
+}
+
+.ripple-effect:active::after {
+  width: 300px;
+  height: 300px;
+  opacity: 0.1;
+  transition: all 0s;
+}
+
+/* Custom scrollbar with progress indication */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted/30;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-primary to-secondary rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply opacity-80;
+}
+
+/* Theme Transition Styles */
+@layer base {
+  /* ...existing base styles... */
+  
+  /* Smooth theme transitions */
+  :root {
+    --theme-transition-duration: 300ms;
+    --theme-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Prevent transitions during theme change to avoid flash */
+  .theme-transitioning * {
+    transition: none !important;
+    animation-duration: 0s !important;
+  }
+  
+  /* Theme transition wrapper */
+  .theme-transition-wrapper {
+    transition: all var(--theme-transition-duration) var(--theme-transition-timing);
+  }
+}
+
+@layer components {
+  /* ...existing component styles... */
+
+  /* Theme toggle animations */
+  .theme-dropdown {
+    @apply backdrop-blur-md bg-background/80 border border-border/60;
+    animation: slideInFromTop 0.2s ease-out;
+  }
+  
+  @keyframes slideInFromTop {
+    from {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  /* Smooth color transitions for all elements */
+  * {
+    transition: 
+      background-color var(--theme-transition-duration) var(--theme-transition-timing),
+      border-color var(--theme-transition-duration) var(--theme-transition-timing),
+      color var(--theme-transition-duration) var(--theme-transition-timing),
+      box-shadow var(--theme-transition-duration) var(--theme-transition-timing);
+  }
+  
+  /* Preserve important animations */
+  .animate-spin,
+  .animate-pulse,
+  .animate-bounce,
+  [data-state="open"],
+  [data-state="closed"] {
+    transition: 
+      background-color var(--theme-transition-duration) var(--theme-transition-timing),
+      border-color var(--theme-transition-duration) var(--theme-transition-timing),
+      color var(--theme-transition-duration) var(--theme-transition-timing),
+      box-shadow var(--theme-transition-duration) var(--theme-transition-timing);
+  }
+  
+  /* Theme-aware glow effects */
+  .dark .hover-glow:hover::before {
+    @apply bg-gradient-to-r from-transparent via-white/10 to-transparent;
+  }
+  
+  .light .hover-glow:hover::before {
+    @apply bg-gradient-to-r from-transparent via-black/10 to-transparent;
+  }
+  
+  /* Enhanced theme-specific shadows */
+  .dark {
+    --shadow-color: 0 0 0;
+    --shadow-elevation-low: 0 1px 2px 0 rgb(var(--shadow-color) / 0.05);
+    --shadow-elevation-medium: 0 4px 6px -1px rgb(var(--shadow-color) / 0.1);
+    --shadow-elevation-high: 0 10px 15px -3px rgb(var(--shadow-color) / 0.1);
+  }
+  
+  .light {
+    --shadow-color: 0 0 0;
+    --shadow-elevation-low: 0 1px 2px 0 rgb(var(--shadow-color) / 0.05);
+    --shadow-elevation-medium: 0 4px 6px -1px rgb(var(--shadow-color) / 0.1);
+    --shadow-elevation-high: 0 10px 15px -3px rgb(var(--shadow-color) / 0.1);
+  }
+  
+  .card-shadow {
+    box-shadow: var(--shadow-elevation-medium);
+  }
+  
+  .card-shadow:hover {
+    box-shadow: var(--shadow-elevation-high);
+  }
+}
+
+/* Advanced theme transition effects */
+@layer utilities {
+  /* Staggered animation for children during theme change */
+  .stagger-children > * {
+    animation-delay: calc(var(--stagger-delay, 0) * 50ms);
+  }
+  
+  /* Theme-aware particle effects */
+  .theme-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .theme-particles::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(var(--primary-rgb), 0.1) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    animation: themeParticles 2s ease-out;
+  }
+  
+  @keyframes themeParticles {
+    0% { opacity: 0; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 0; transform: scale(1); }
+  }
+  
+  /* Smooth scrollbar theme transitions */
+  ::-webkit-scrollbar-thumb {
+    transition: background-color var(--theme-transition-duration) var(--theme-transition-timing);
+  }
+  
+  ::-webkit-scrollbar-track {
+    transition: background-color var(--theme-transition-duration) var(--theme-transition-timing);
+  }
 }

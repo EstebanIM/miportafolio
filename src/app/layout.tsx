@@ -1,9 +1,22 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme/theme-provider'
+import { SmoothScroll } from '@/components/ui/smooth-scroll'
+import { ScrollProgress } from '@/components/ui/scroll-progress'
+import { ReadingProgress } from '@/components/ui/reading-progress'
+import { ScrollToTop } from '@/components/ui/scroll-to-top'
+import { ThemeTransition } from '@/components/ui/theme-transition'
 
-const inter = Inter({ subsets: ['latin'] })
+const geistSans = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist-sans',
+})
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
+})
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tu-dominio.vercel.app'
 const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'Esteban Inzunza Portfolio'
@@ -59,25 +72,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-      </head>
-      <body className={inter.className}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
+          disableTransitionOnChange={false}
         >
+          <ThemeTransition />
+          <SmoothScroll />
+          <ScrollProgress />
+          <ReadingProgress />
+          <ScrollToTop />
           {children}
         </ThemeProvider>
       </body>

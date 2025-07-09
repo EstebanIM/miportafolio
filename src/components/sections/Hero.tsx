@@ -4,12 +4,19 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Mail, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Particles } from '@/components/ui/particles'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { trackCVDownload, trackPageView } from '@/lib/analytics'
+import { ViewCounter } from '@/components/ui/view-counter'
 
 export function Hero() {
   const [showCvOptions, setShowCvOptions] = useState(false)
   const ref = useRef(null)
   
+  // Track page view on mount
+  useEffect(() => {
+    trackPageView()
+  }, [])
+
   // Parallax effect para el scroll
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -18,13 +25,15 @@ export function Hero() {
   
   // Diferentes velocidades para crear el efecto parallax
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
-  const backgroundY2 = useTransform(scrollYProgress, [0, 1], ["0%", "25%"])
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "150%"])
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"])
 
-  const downloadCV = (language: 'es' | 'en') => {
+  const downloadCV = async (language: 'es' | 'en') => {
     const fileName = language === 'es' 
       ? 'CV_Esteban_Inzunza_Español.pdf' 
       : 'CV_Esteban_Inzunza_English.pdf'
+    
+    // Track the download
+    await trackCVDownload(language === 'es' ? 'spanish' : 'english')
     
     const link = document.createElement('a')
     link.href = `/cv/${fileName}`
@@ -41,33 +50,22 @@ export function Hero() {
       id="hero" 
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
     >
-      {/* Sistema de partículas */}
+      {/* Partículas de fondo */}
       <Particles
         className="absolute inset-0 z-0"
-        quantity={60}
-        staticity={50}
-        ease={50}
+        quantity={80}
+        staticity={85}
+        ease={75}
+        color="#3b82f6"
       />
 
-      {/* Fondo parallax - capa 1 (más lenta) */}
+      {/* Efectos parallax de fondo */}
       <motion.div
-        className="absolute inset-0 z-1"
+        className="absolute inset-0 z-0"
         style={{ y: backgroundY }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
-      </motion.div>
-
-      {/* Fondo parallax - capa 2 (velocidad media) */}
-      <motion.div
-        className="absolute inset-0 z-2"
-        style={{ y: backgroundY2 }}
-      >
-        <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-primary/20 rounded-full" />
-        <div className="absolute top-1/2 left-1/3 w-1 h-1 bg-secondary/30 rounded-full" />
-        <div className="absolute bottom-1/3 left-1/4 w-3 h-3 bg-primary/15 rounded-full" />
-        <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-secondary/25 rounded-full" />
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/10 rounded-full blur-3xl" />
       </motion.div>
 
       {/* Contenido principal */}
@@ -80,23 +78,23 @@ export function Hero() {
           className="text-center max-w-4xl mx-auto"
         >
           <motion.h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Esteban Inzunza
-            <br />
-            Desarrollador Front End
           </motion.h1>
           
           <motion.p
-            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance"
+            className="text-xl md:text-2xl text-muted-foreground mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Creando experiencias web modernas y escalables con las últimas tecnologías
+            Desarrollador Front End especializado en{' '}
+            <span className="text-primary font-semibold">React</span> y{' '}
+            <span className="text-primary font-semibold">Next.js</span>
           </motion.p>
           
           <motion.div
@@ -191,12 +189,23 @@ export function Hero() {
             </Button>
           </motion.div>
         </motion.div>
+        
+        {/* Contador de visitas */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="absolute bottom-4 right-4"
+        >
+          <ViewCounter />
+        </motion.div>
       </div>
       
+      {/* Indicador de scroll */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        transition={{ duration: 2, repeat: Infinity }}
       >
         <ChevronDown className="h-6 w-6 text-muted-foreground" />
       </motion.div>
