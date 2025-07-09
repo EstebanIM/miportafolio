@@ -38,7 +38,7 @@ const initialCode = `// 🚀 ¡Bienvenido al Code Playground!
 // Experimenta con JavaScript aquí
 
 function createPortfolio() {
-  const skills = ['React', 'Next.js', 'TypeScript', 'Three.js'];
+  const skills = ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'];
   const passion = '💻 Desarrollo Frontend';
   
   return {
@@ -78,26 +78,28 @@ function Counter() {
 export default Counter;`
   },
   {
-    name: 'Three.js Scene',
-    code: `// Escena 3D básica con Three.js
-import * as THREE from 'three';
+    name: 'Next.js API Route',
+    code: `// API Route de Next.js
+import { NextRequest, NextResponse } from 'next/server';
 
-function create3DScene() {
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, 16/9, 0.1, 1000);
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const name = searchParams.get('name') || 'World';
   
-  // Crear un cubo
-  const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-  const cube = new THREE.Mesh(geometry, material);
-  
-  scene.add(cube);
-  camera.position.z = 5;
-  
-  return { scene, camera, cube };
+  return NextResponse.json({
+    message: \`Hello, \${name}!\`,
+    timestamp: new Date().toISOString()
+  });
 }
 
-console.log('Escena 3D creada!');`
+export async function POST(request: NextRequest) {
+  const body = await request.json();
+  
+  return NextResponse.json({
+    received: body,
+    status: 'success'
+  });
+}`
   },
   {
     name: 'Async/Await',
