@@ -21,21 +21,10 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
       attribute="class"
       defaultTheme="system"
       enableSystem
-      disableTransitionOnChange={false}
+      disableTransitionOnChange={true} // Let our custom transition handle this
       {...props}
     >
-      <AnimatePresence mode="wait">
-        <motion.div
-          key="theme-wrapper"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="theme-transition-wrapper"
-        >
-          {children}
-        </motion.div>
-      </AnimatePresence>
+      {children}
     </NextThemesProvider>
   )
 }

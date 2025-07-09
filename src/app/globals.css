@@ -325,23 +325,31 @@
 
 /* Theme Transition Styles */
 @layer base {
-  /* ...existing base styles... */
-  
   /* Smooth theme transitions */
   :root {
-    --theme-transition-duration: 300ms;
-    --theme-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    --theme-transition-duration: 400ms;
+    --theme-transition-timing: cubic-bezier(0.23, 1, 0.32, 1);
+    --theme-transition-property: background-color, border-color, color, fill, stroke, box-shadow;
   }
   
-  /* Prevent transitions during theme change to avoid flash */
+  /* Enhanced smooth transitions for all elements */
+  * {
+    transition: var(--theme-transition-property) var(--theme-transition-duration) var(--theme-transition-timing);
+  }
+  
+  /* Disable transitions during theme change preparation */
   .theme-transitioning * {
-    transition: none !important;
-    animation-duration: 0s !important;
+    transition-duration: 0ms !important;
   }
   
-  /* Theme transition wrapper */
+  /* Re-enable smoother transitions after preparation */
+  html[data-theme-changing] * {
+    transition: var(--theme-transition-property) var(--theme-transition-duration) var(--theme-transition-timing) !important;
+  }
+  
+  /* Theme transition wrapper - removed conflicting styles */
   .theme-transition-wrapper {
-    transition: all var(--theme-transition-duration) var(--theme-transition-timing);
+    /* Let individual elements handle their own transitions */
   }
 }
 
@@ -365,13 +373,9 @@
     }
   }
   
-  /* Smooth color transitions for all elements */
+  /* Smooth color transitions for all elements - updated */
   * {
-    transition: 
-      background-color var(--theme-transition-duration) var(--theme-transition-timing),
-      border-color var(--theme-transition-duration) var(--theme-transition-timing),
-      color var(--theme-transition-duration) var(--theme-transition-timing),
-      box-shadow var(--theme-transition-duration) var(--theme-transition-timing);
+    transition: var(--theme-transition-property) var(--theme-transition-duration) var(--theme-transition-timing);
   }
   
   /* Preserve important animations */

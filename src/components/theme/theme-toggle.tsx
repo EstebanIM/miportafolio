@@ -25,16 +25,23 @@ export function ThemeToggle() {
   }
 
   const handleThemeChange = (newTheme: string) => {
-    // Add theme transition class to body
+    // Prepare document for smooth transition
+    document.documentElement.style.setProperty('--theme-changing', '1')
+    
+    // Add transition preparation class
     document.body.classList.add('theme-transitioning')
 
-    // Apply theme change
-    setTheme(newTheme)
-
-    // Remove transition class after animation
-    setTimeout(() => {
-      document.body.classList.remove('theme-transitioning')
-    }, 300)
+    // Small delay to ensure styles are applied
+    requestAnimationFrame(() => {
+      // Apply theme change
+      setTheme(newTheme)
+      
+      // Remove preparation styles after transition completes
+      setTimeout(() => {
+        document.body.classList.remove('theme-transitioning')
+        document.documentElement.style.removeProperty('--theme-changing')
+      }, 600)
+    })
   }
 
   const getThemeIcon = () => {
