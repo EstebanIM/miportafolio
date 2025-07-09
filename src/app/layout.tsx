@@ -31,6 +31,16 @@ export const metadata: Metadata = {
   keywords: ['desarrollador', 'frontend', 'react', 'nextjs', 'typescript', 'javascript', 'css'],
   authors: [{ name: 'Esteban Inzunza' }],
   creator: 'Esteban Inzunza',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16', type: 'image/x-icon' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-dark.svg', type: 'image/svg+xml', media: '(prefers-color-scheme: dark)' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   openGraph: {
     type: 'website',
     locale: 'es_ES',

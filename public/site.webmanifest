@@ -1,7 +1,7 @@
 {
-  "name": "Tu Nombre - Desarrollador Full Stack",
-  "short_name": "Tu Portfolio",
-  "description": "Portfolio profesional de desarrollador Full Stack",
+  "name": "Esteban Inzunza - Desarrollador Front End",
+  "short_name": "Esteban Inzunza",
+  "description": "Portfolio profesional de Esteban Inzunza, Desarrollador Front End especializado en React, Next.js y TypeScript.",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -12,10 +12,16 @@
       "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
     }
   ],
-  "theme_color": "#000000",
+  "theme_color": "#3b82f6",
   "background_color": "#ffffff",
   "display": "standalone",
-  "start_url": "/"
+  "start_url": "/",
+  "lang": "es"
 }
