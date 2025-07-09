@@ -10,7 +10,7 @@
     "lint:fix": "next lint --fix",
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
-    "prepare": "husky install",
+    "prepare": "node -e \"if (!process.env.CI && !process.env.VERCEL) { try { require('child_process').execSync('husky install', {stdio:'inherit'}) } catch(e) { console.log('Husky not available') } }\"",
     "vercel-build": "next build"
   },
   "dependencies": {
