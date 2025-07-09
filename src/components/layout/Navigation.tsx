@@ -43,7 +43,7 @@ export function Navigation() {
 					<motion.div
 						initial={{ opacity: 0, x: -20 }}
 						animate={{ opacity: 1, x: 0 }}
-						className="text-xl font-bold"
+						className="text-xl font-bold hover-glow cursor-pointer"
 					>
 						Esteban Inzunza
 					</motion.div>
@@ -54,7 +54,7 @@ export function Navigation() {
 							<a
 								key={item.name}
 								href={item.href}
-								className="text-foreground/70 hover:text-foreground transition-colors"
+								className="text-foreground/70 hover:text-foreground transition-colors hover-border-slide relative py-2"
 							>
 								{item.name}
 							</a>
@@ -69,12 +69,9 @@ export function Navigation() {
 							variant="ghost"
 							size="icon"
 							onClick={() => setIsOpen(!isOpen)}
+							className="hover-rotate"
 						>
-							{isOpen ? (
-								<X className="h-5 w-5" />
-							) : (
-								<Menu className="h-5 w-5" />
-							)}
+							{isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
 						</Button>
 					</div>
 				</div>
@@ -92,7 +89,7 @@ export function Navigation() {
 								<a
 									key={item.name}
 									href={item.href}
-									className="block text-foreground/70 hover:text-foreground transition-colors"
+									className="block text-foreground/70 hover:text-foreground transition-colors hover-border-slide py-2"
 									onClick={() => setIsOpen(false)}
 								>
 									{item.name}
@@ -105,3 +102,4 @@ export function Navigation() {
 		</motion.nav>
 	)
 }
+

@@ -1,12 +1,25 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Mail, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { useState } from 'react'
+import { Particles } from '@/components/ui/particles'
+import { useState, useRef } from 'react'
 
 export function Hero() {
   const [showCvOptions, setShowCvOptions] = useState(false)
+  const ref = useRef(null)
+  
+  // Parallax effect para el scroll
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  })
+  
+  // Diferentes velocidades para crear el efecto parallax
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
+  const backgroundY2 = useTransform(scrollYProgress, [0, 1], ["0%", "25%"])
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "150%"])
 
   const downloadCV = (language: 'es' | 'en') => {
     const fileName = language === 'es' 
@@ -23,12 +36,47 @@ export function Hero() {
   }
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-background to-background/80">
-      <div className="container mx-auto px-4 z-10">
+    <section 
+      ref={ref}
+      id="hero" 
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+    >
+      {/* Sistema de partículas */}
+      <Particles
+        className="absolute inset-0 z-0"
+        quantity={60}
+        staticity={50}
+        ease={50}
+      />
+
+      {/* Fondo parallax - capa 1 (más lenta) */}
+      <motion.div
+        className="absolute inset-0 z-1"
+        style={{ y: backgroundY }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
+      </motion.div>
+
+      {/* Fondo parallax - capa 2 (velocidad media) */}
+      <motion.div
+        className="absolute inset-0 z-2"
+        style={{ y: backgroundY2 }}
+      >
+        <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-primary/20 rounded-full" />
+        <div className="absolute top-1/2 left-1/3 w-1 h-1 bg-secondary/30 rounded-full" />
+        <div className="absolute bottom-1/3 left-1/4 w-3 h-3 bg-primary/15 rounded-full" />
+        <div className="absolute top-2/3 right-1/3 w-1 h-1 bg-secondary/25 rounded-full" />
+      </motion.div>
+
+      {/* Contenido principal */}
+      <div className="container mx-auto px-4 z-10 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          style={{ y: textY }}
           className="text-center max-w-4xl mx-auto"
         >
           <motion.h1
@@ -124,19 +172,19 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://github.com/tu-usuario" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/EstebanIM" target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener noreferrer">
+              <a href="https://linkedin.com/in/einzunza2" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="mailto:tu-email@example.com">
+              <a href="mailto:einzunza2@gmail.com">
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
               </a>
@@ -146,7 +194,7 @@ export function Hero() {
       </div>
       
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
