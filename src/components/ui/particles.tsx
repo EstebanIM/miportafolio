@@ -30,8 +30,15 @@ export function Particles({
 
     // Set canvas size
     const setCanvasSize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      const rect = canvas.getBoundingClientRect()
+      const parent = canvas.parentElement
+      if (parent) {
+        canvas.width = parent.offsetWidth
+        canvas.height = parent.offsetHeight
+      } else {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+      }
     }
 
     setCanvasSize()
@@ -49,8 +56,8 @@ export function Particles({
       baseVy: number
 
       constructor() {
-        this.x = Math.random() * (canvas?.width || 0)
-        this.y = Math.random() * (canvas?.height || 0)
+        this.x = Math.random() * (canvas?.width || window.innerWidth)
+        this.y = Math.random() * (canvas?.height || window.innerHeight)
         
         // Improved velocity calculation for better movement
         const speed = (ease / 100) * 2
@@ -83,8 +90,8 @@ export function Particles({
         }
 
         // Handle edge bouncing with proper boundary detection
-        const canvasWidth = canvas?.width || 0
-        const canvasHeight = canvas?.height || 0
+        const canvasWidth = canvas?.width || window.innerWidth
+        const canvasHeight = canvas?.height || window.innerHeight
 
         if (this.x <= 0) {
           this.x = 0

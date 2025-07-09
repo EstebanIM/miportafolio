@@ -25,7 +25,7 @@ export function Hero() {
   
   // Diferentes velocidades para crear el efecto parallax
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"])
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
 
   const downloadCV = async (language: 'es' | 'en') => {
     const fileName = language === 'es' 
@@ -188,16 +188,6 @@ export function Hero() {
               </a>
             </Button>
           </motion.div>
-        </motion.div>
-        
-        {/* Contador de visitas */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="absolute bottom-4 right-4"
-        >
-          <ViewCounter />
         </motion.div>
       </div>
       

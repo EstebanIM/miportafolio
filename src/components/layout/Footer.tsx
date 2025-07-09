@@ -7,12 +7,13 @@ import { DownloadTracker } from '@/components/ui/download-tracker'
 export function Footer() {
   return (
     <footer className="bg-muted/30 border-t border-border/40 relative overflow-hidden">
-      {/* Partículas muy sutiles en el footer */}
+      {/* Partículas de fondo */}
       <Particles
         className="absolute inset-0 z-0"
-        quantity={20}
-        staticity={80}
-        ease={30}
+        quantity={80}
+        staticity={85}
+        ease={75}
+        color="#3b82f6"
       />
       
       <div className="container mx-auto px-4 py-8 relative z-10">
