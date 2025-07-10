@@ -15,7 +15,6 @@ export function ReadingProgress() {
   const sections = [
     { id: 'hero', name: 'Inicio' },
     { id: 'about', name: 'Sobre mí' },
-    { id: 'skills', name: 'Habilidades' },
     { id: 'projects', name: 'Proyectos' },
     { id: 'contact', name: 'Contacto' }
   ]

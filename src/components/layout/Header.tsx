@@ -19,24 +19,40 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMobileMenuOpen])
+
   const navItems = [
     { href: '#about', label: 'Sobre mí' },
-    { href: '#skills', label: 'Habilidades' },
     { href: '#projects', label: 'Proyectos' },
     { href: '#contact', label: 'Contacto' },
   ]
 
   return (
-    <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-background/80 backdrop-blur-md border-b border-border/40 card-shadow'
-          : 'bg-transparent'
-      }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-    >
+    <>
+      <motion.header
+        className={`fixed top-0 left-0 right-0 transition-all duration-300 ${
+          isMobileMenuOpen ? 'z-[70]' : 'z-50'
+        } ${
+          isScrolled || isMobileMenuOpen
+            ? 'bg-background/80 backdrop-blur-md border-b border-border/40 card-shadow'
+            : 'bg-transparent'
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -104,13 +120,11 @@ export function Header() {
               </Button>
             </div>
           </div>
-        </div>
-
-        {/* Mobile Navigation */}
+        </div>        {/* Mobile Navigation */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.nav
-              className="md:hidden py-4 border-t border-border/40"
+              className="md:hidden py-4 border-t border-border/40 relative z-[70] bg-background/95 backdrop-blur-md"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
@@ -137,5 +151,20 @@ export function Header() {
         </AnimatePresence>
       </div>
     </motion.header>
+
+    {/* Mobile Overlay - Outside header for better positioning */}
+    <AnimatePresence>
+      {isMobileMenuOpen && (
+        <motion.div
+          className="fixed inset-0 bg-black/70 backdrop-blur-md z-[60] md:hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+    </AnimatePresence>
+  </>
   )
 }

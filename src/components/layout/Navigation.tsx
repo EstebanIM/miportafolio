@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme/theme-toggle'
@@ -18,7 +18,6 @@ export function Navigation() {
 		{ name: t('navigation.home'), href: '#hero' },
 		{ name: t('navigation.about'), href: '#about' },
 		{ name: t('navigation.experience'), href: '#experience' },
-		{ name: t('navigation.skills'), href: '#skills' },
 		{ name: t('navigation.projects'), href: '#projects' },
 		{ name: t('navigation.interactive'), href: '#interactive' },
 		{ name: t('navigation.contact'), href: '#contact' },
@@ -32,17 +31,33 @@ export function Navigation() {
 		return () => window.removeEventListener('scroll', handleScroll)
 	}, [])
 
+	// Prevent body scroll when mobile menu is open
+	useEffect(() => {
+		if (isOpen) {
+			document.body.style.overflow = 'hidden'
+		} else {
+			document.body.style.overflow = 'unset'
+		}
+
+		// Cleanup on unmount
+		return () => {
+			document.body.style.overflow = 'unset'
+		}
+	}, [isOpen])
+
 	return (
-		<motion.nav
-			initial={{ y: -100 }}
-			animate={{ y: 0 }}
-			className={cn(
-				'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-				scrolled
-					? 'bg-background/80 backdrop-blur-md shadow-sm border-b border-border/40'
-					: 'bg-transparent'
-			)}
-		>
+		<>
+			<motion.nav
+				initial={{ y: -100 }}
+				animate={{ y: 0 }}
+				className={cn(
+					'fixed top-0 left-0 right-0 transition-all duration-300',
+					isOpen ? 'z-[70]' : 'z-50',
+					scrolled || isOpen
+						? 'bg-background/80 backdrop-blur-md shadow-sm border-b border-border/40'
+						: 'bg-transparent'
+				)}
+			>
 			<div className="container mx-auto px-4">
 				<div className="flex items-center justify-between h-16">
 					<motion.div
@@ -86,29 +101,46 @@ export function Navigation() {
 				</div>
 
 				{/* Mobile Menu */}
-				{isOpen && (
-					<motion.div
-						initial={{ opacity: 0, height: 0 }}
-						animate={{ opacity: 1, height: 'auto' }}
-						exit={{ opacity: 0, height: 0 }}
-						className="md:hidden border-t border-border/40"
-					>
-						<div className="py-4 space-y-4">
-							{navItems.map((item) => (
-								<a
-									key={item.name}
-									href={item.href}
-									className="block text-foreground/70 hover:text-foreground transition-colors hover-border-slide py-2"
-									onClick={() => setIsOpen(false)}
-								>
-									{item.name}
-								</a>
-							))}
-						</div>
-					</motion.div>
-				)}
+				<AnimatePresence>
+					{isOpen && (
+						<motion.div
+							initial={{ opacity: 0, height: 0 }}
+							animate={{ opacity: 1, height: 'auto' }}
+							exit={{ opacity: 0, height: 0 }}
+							className="md:hidden border-t border-border/40 relative z-[70] bg-background/95 backdrop-blur-md"
+						>
+							<div className="py-4 space-y-4">
+								{navItems.map((item) => (
+									<a
+										key={item.name}
+										href={item.href}
+										className="block text-foreground/70 hover:text-foreground transition-colors hover-border-slide py-2"
+										onClick={() => setIsOpen(false)}
+									>
+										{item.name}
+									</a>
+								))}
+							</div>
+						</motion.div>
+					)}
+				</AnimatePresence>
 			</div>
 		</motion.nav>
+
+		{/* Mobile Overlay - Outside nav for better positioning */}
+		<AnimatePresence>
+			{isOpen && (
+				<motion.div
+					className="fixed inset-0 bg-black/70 backdrop-blur-md z-[60] md:hidden"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					transition={{ duration: 0.3 }}
+					onClick={() => setIsOpen(false)}
+				/>
+			)}
+		</AnimatePresence>
+	</>
 	)
 }
 
