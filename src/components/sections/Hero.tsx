@@ -1,16 +1,19 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ChevronDown, Github, Linkedin, Mail, Download } from 'lucide-react'
+import { ChevronDown, Github, Linkedin, Mail, Download, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Particles } from '@/components/ui/particles'
 import { useState, useRef, useEffect } from 'react'
 import { trackCVDownload, trackPageView } from '@/lib/analytics'
 import { ViewCounter } from '@/components/ui/view-counter'
 import { useTranslation } from '@/contexts/LanguageContext'
+import Image from 'next/image'
 
 export function Hero() {
   const [showCvOptions, setShowCvOptions] = useState(false)
+  const [easterEggClicks, setEasterEggClicks] = useState(0)
+  const [showEasterEggModal, setShowEasterEggModal] = useState(false)
   const ref = useRef(null)
   const { t } = useTranslation()
   
@@ -44,6 +47,17 @@ export function Hero() {
     link.click()
     document.body.removeChild(link)
     setShowCvOptions(false)
+  }
+
+  const handleEasterEggClick = () => {
+    setEasterEggClicks(prev => {
+      const newCount = prev + 1
+      if (newCount >= 10) {
+        setShowEasterEggModal(true)
+        return 0 // Reset counter
+      }
+      return newCount
+    })
   }
 
   return (
@@ -85,7 +99,13 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {t('hero.title')}
+            <span 
+              className="select-none"
+              onClick={handleEasterEggClick}
+            >
+              E
+            </span>
+            {t('hero.title').substring(1)}
           </motion.h1>
           
           <motion.p
@@ -202,6 +222,52 @@ export function Hero() {
           </motion.div>
         </motion.div>
       </div>
+      
+      {/* Easter Egg Modal */}
+      {showEasterEggModal && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          onClick={() => setShowEasterEggModal(false)}
+        >
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.5, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            className="relative w-full h-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowEasterEggModal(false)}
+              className="absolute top-4 right-4 z-10 text-white hover:text-gray-300 transition-colors bg-black/50 rounded-full p-2"
+            >
+              <X className="h-8 w-8" />
+            </button>
+            
+            <div className="w-full h-full flex items-center justify-center">
+              <Image 
+                src="/rludios.png" 
+                alt="Easter Egg" 
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+              <h3 className="text-2xl font-bold mb-2 text-white drop-shadow-lg">
+                🎉 ¡Easter Egg Encontrado!
+              </h3>
+              <p className="text-white/80 drop-shadow-lg">
+                ¡Felicidades por encontrar el secreto! 🎊
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
       
       {/* Indicador de scroll */}
       <motion.div

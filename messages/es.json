@@ -84,14 +84,12 @@
         "period": "Septiembre 2024 - Diciembre 2024",
         "description": [
           "Mejoré la visibilidad online de la empresa mediante el rediseño y actualización del sitio web",
-          "Diseñé e implementé un sistema de inventario con React.js que optimizó la organización del almacén",
+          "Diseñé un sistema de inventario con React.js que optimizó la organización del almacén",
           "Desarrollé soluciones web modernas para mejorar la experiencia del usuario"
         ],
         "achievements": [
           "Incremento de la visibilidad online de la empresa",
-          "Optimización del 40% en la gestión de inventario",
-          "Implementación de interfaz moderna y responsive",
-          "Mejora significativa en la experiencia del usuario"
+          "Implementación de interfaz moderna y responsive"
         ]
       }
     },
