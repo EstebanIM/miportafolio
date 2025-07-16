@@ -34,7 +34,7 @@ Este portafolio está diseñado para demostrar habilidades específicas de desar
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/mi-portafolio.git
+git clone https://github.com/EstebanIM/miportafolio.git
 
 # Instalar dependencias
 cd mi-portafolio
@@ -46,61 +46,6 @@ cp .env.example .env.local
 # Ejecutar en desarrollo
 npm run dev
 ```
-
-## 🚀 Deployment en Vercel
-
-### Opción 1: Desde GitHub (Recomendado)
-
-1. **Subir código a GitHub**:
-
-   ```bash
-   git add .
-   git commit -m "feat: initial portfolio setup"
-   git push origin main
-   ```
-
-2. **Conectar con Vercel**:
-   - Ve a [vercel.com](https://vercel.com)
-   - Haz clic en "New Project"
-   - Importa tu repositorio desde GitHub
-   - Configura las variables de entorno
-   - Haz clic en "Deploy"
-
-### Opción 2: Desde CLI
-
-```bash
-# Instalar Vercel CLI
-npm i -g vercel
-
-# Login en Vercel
-vercel login
-
-# Deploy
-vercel
-
-# Para producción
-vercel --prod
-```
-
-## 🔧 Variables de Entorno en Vercel
-
-En el dashboard de Vercel, añade estas variables:
-
-```env
-NEXT_PUBLIC_SITE_URL=https://tu-dominio.vercel.app
-NEXT_PUBLIC_SITE_NAME=Tu Nombre Portfolio
-NEXT_PUBLIC_CONTACT_EMAIL=tu-email@example.com
-NEXT_PUBLIC_GITHUB_URL=https://github.com/tu-usuario
-NEXT_PUBLIC_LINKEDIN_URL=https://linkedin.com/in/tu-usuario
-```
-
-## 📊 Performance
-
-- **Lighthouse Score**: 100/100
-- **First Contentful Paint**: < 1.5s
-- **Largest Contentful Paint**: < 2.5s
-- **Cumulative Layout Shift**: < 0.1
-
 ## 🚀 Scripts Disponibles
 
 ```bash
@@ -129,9 +74,9 @@ src/
 
 ## 📧 Contacto
 
-Tu Nombre - [@tu_usuario](https://twitter.com/tu_usuario) - tu-email@example.com
+Esteban Inzunza - einzunza2@gmail.com
 
-Project Link: https://github.com/tu-usuario/mi-portafolio (https://github.com/tu-usuario/mi-portafolio)
+Project Link: https://github.com/EstebanIM/miportafolio
 
 ---
 
@@ -148,13 +93,5 @@ Project Link: https://github.com/tu-usuario/mi-portafolio (https://github.com/tu
 ## 📝 Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
-
-## 📧 Contacto
-
-Esteban Inzunza - https://www.linkedin.com/in/einzunza2/ - einzunza2@gmail.com
-
-Project Link: https://github.com/EstebanIM/miportafolio
-
----
 
 ⭐ ¡No olvides darle una estrella al repositorio si te ha sido útil!
