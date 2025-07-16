@@ -44,6 +44,16 @@ coverage/
 # Testing
 __tests__/__coverage__/
 .nyc_output/
+coverage/
+
+# PWA files
+public/sw.js
+public/sw.js.map
+public/workbox-*.js
+public/workbox-*.js.map
+
+# Web Vitals data
+web-vitals.json
 
 # Dependency directories
 node_modules/

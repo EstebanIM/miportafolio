@@ -11,6 +11,9 @@ import { ThemeTransition } from '@/components/ui/theme-transition'
 import { ErrorBoundary } from '@/components/error-boundary'
 import { StructuredData } from '@/components/structured-data'
 import { SkipLinks } from '@/components/skip-links'
+import { WebVitalsProvider } from '@/components/providers/web-vitals-provider'
+import { NetworkStatus } from '@/components/ui/network-status'
+import { WebVitalsDashboard } from '@/components/ui/web-vitals-dashboard'
 
 const geistSans = Geist({
   subsets: ['latin'],
@@ -96,6 +99,7 @@ export default function RootLayout({
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <SkipLinks />
+        <NetworkStatus />
         <ErrorBoundary level="page">
           <LanguageProvider>
             <ThemeProvider
@@ -104,12 +108,15 @@ export default function RootLayout({
               enableSystem
               disableTransitionOnChange={false}
             >
-              <ThemeTransition />
-              <SmoothScroll />
-              <ScrollProgress />
-              <ReadingProgress />
-              <ScrollToTop />
-              {children}
+              <WebVitalsProvider>
+                <ThemeTransition />
+                <SmoothScroll />
+                <ScrollProgress />
+                <ReadingProgress />
+                <ScrollToTop />
+                {children}
+                <WebVitalsDashboard />
+              </WebVitalsProvider>
             </ThemeProvider>
           </LanguageProvider>
         </ErrorBoundary>
