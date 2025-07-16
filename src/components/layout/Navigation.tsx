@@ -57,6 +57,8 @@ export function Navigation() {
 						? 'bg-background/80 backdrop-blur-md shadow-sm border-b border-border/40'
 						: 'bg-transparent'
 				)}
+				role="navigation"
+				aria-label="Navegación principal"
 			>
 			<div className="container mx-auto px-4">
 				<div className="flex items-center justify-between h-16">
@@ -69,17 +71,19 @@ export function Navigation() {
 					</motion.div>
 
 					{/* Desktop Menu */}
-					<div className="hidden md:flex items-center space-x-8">
+					<div className="hidden md:flex items-center space-x-8" role="menubar">
 						{navItems.map((item) => (
 							<a
 								key={item.name}
 								href={item.href}
 								className="text-foreground/70 hover:text-foreground transition-colors hover-border-slide relative py-2"
+								role="menuitem"
+								aria-label={`Navegar a sección ${item.name}`}
 							>
 								{item.name}
 							</a>
 						))}
-						<div className="flex items-center gap-2">
+						<div className="flex items-center gap-2" role="group" aria-label="Configuraciones">
 							<LanguageToggle />
 							<ThemeToggle />
 						</div>
@@ -94,6 +98,9 @@ export function Navigation() {
 							size="icon"
 							onClick={() => setIsOpen(!isOpen)}
 							className="hover-rotate"
+							aria-label={isOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
+							aria-expanded={isOpen}
+							aria-controls="mobile-menu"
 						>
 							{isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
 						</Button>
@@ -108,6 +115,9 @@ export function Navigation() {
 							animate={{ opacity: 1, height: 'auto' }}
 							exit={{ opacity: 0, height: 0 }}
 							className="md:hidden border-t border-border/40 relative z-[70] bg-background/95 backdrop-blur-md"
+							id="mobile-menu"
+							role="menu"
+							aria-label="Menú de navegación móvil"
 						>
 							<div className="py-4 space-y-4">
 								{navItems.map((item) => (
@@ -116,6 +126,8 @@ export function Navigation() {
 										href={item.href}
 										className="block text-foreground/70 hover:text-foreground transition-colors hover-border-slide py-2"
 										onClick={() => setIsOpen(false)}
+										role="menuitem"
+										aria-label={`Navegar a sección ${item.name}`}
 									>
 										{item.name}
 									</a>

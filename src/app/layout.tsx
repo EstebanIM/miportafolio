@@ -8,6 +8,9 @@ import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { ReadingProgress } from '@/components/ui/reading-progress'
 import { ScrollToTop } from '@/components/ui/scroll-to-top'
 import { ThemeTransition } from '@/components/ui/theme-transition'
+import { ErrorBoundary } from '@/components/error-boundary'
+import { StructuredData } from '@/components/structured-data'
+import { SkipLinks } from '@/components/skip-links'
 
 const geistSans = Geist({
   subsets: ['latin'],
@@ -88,22 +91,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <head>
+        <StructuredData />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <LanguageProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange={false}
-          >
-            <ThemeTransition />
-            <SmoothScroll />
-            <ScrollProgress />
-            <ReadingProgress />
-            <ScrollToTop />
-            {children}
-          </ThemeProvider>
-        </LanguageProvider>
+        <SkipLinks />
+        <ErrorBoundary level="page">
+          <LanguageProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange={false}
+            >
+              <ThemeTransition />
+              <SmoothScroll />
+              <ScrollProgress />
+              <ReadingProgress />
+              <ScrollToTop />
+              {children}
+            </ThemeProvider>
+          </LanguageProvider>
+        </ErrorBoundary>
       </body>
     </html>
   )

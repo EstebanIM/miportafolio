@@ -65,6 +65,9 @@ export function Hero() {
       ref={ref}
       id="hero" 
       className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      role="banner"
+      aria-labelledby="hero-title"
+      aria-describedby="hero-description"
     >
       {/* Partículas de fondo */}
       <Particles
@@ -94,6 +97,7 @@ export function Hero() {
           className="text-center max-w-4xl mx-auto"
         >
           <motion.h1
+            id="hero-title"
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -109,6 +113,7 @@ export function Hero() {
           </motion.h1>
           
           <motion.p
+            id="hero-description"
             className="text-xl md:text-2xl text-muted-foreground mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -134,9 +139,14 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
+            role="group"
+            aria-label="Acciones principales"
           >
             <Button size="lg" className="group" asChild>
-              <a href="#projects">
+              <a 
+                href="#projects"
+                aria-label="Ver mis proyectos destacados"
+              >
                 {t('hero.cta.projects')}
                 <motion.div
                   className="ml-2"
@@ -154,6 +164,9 @@ export function Hero() {
                 size="lg"
                 onClick={() => setShowCvOptions(!showCvOptions)}
                 className="group"
+                aria-label="Descargar curriculum vitae"
+                aria-expanded={showCvOptions}
+                aria-haspopup="menu"
               >
                 <Download className="h-4 w-4 mr-2" />
                 {t('hero.cta.downloadCV')}
@@ -173,12 +186,16 @@ export function Hero() {
                   exit={{ opacity: 0, y: -10, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
                   className="absolute top-full mt-2 left-0 right-0 bg-card border border-border rounded-md shadow-lg p-2 z-50"
+                  role="menu"
+                  aria-label="Opciones de descarga de CV"
                 >
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => downloadCV('es')}
                     className="w-full justify-start mb-1"
+                    role="menuitem"
+                    aria-label="Descargar CV en español"
                   >
                     {t('hero.cta.cvSpanish')}
                   </Button>
@@ -187,6 +204,8 @@ export function Hero() {
                     size="sm"
                     onClick={() => downloadCV('en')}
                     className="w-full justify-start"
+                    role="menuitem"
+                    aria-label="Descargar CV en inglés"
                   >
                     {t('hero.cta.cvEnglish')}
                   </Button>
@@ -200,21 +219,36 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
+            role="group"
+            aria-label="Enlaces de redes sociales"
           >
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://github.com/EstebanIM" target="_blank" rel="noopener noreferrer">
+              <a 
+                href="https://github.com/EstebanIM" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Visitar perfil de GitHub de Esteban Inzunza (se abre en nueva pestaña)"
+              >
                 <Github className="h-5 w-5" />
                 <span className="sr-only">{t('hero.social.github')}</span>
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="https://linkedin.com/in/einzunza2" target="_blank" rel="noopener noreferrer">
+              <a 
+                href="https://linkedin.com/in/einzunza2" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Visitar perfil de LinkedIn de Esteban Inzunza (se abre en nueva pestaña)"
+              >
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">{t('hero.social.linkedin')}</span>
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="mailto:einzunza2@gmail.com">
+              <a 
+                href="mailto:einzunza2@gmail.com"
+                aria-label="Enviar correo electrónico a Esteban Inzunza"
+              >
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">{t('hero.social.email')}</span>
               </a>

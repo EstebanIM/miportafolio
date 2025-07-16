@@ -6,18 +6,42 @@ import { InteractiveElementsWrapper } from '@/components/interactive/Interactive
 import { Contact } from '@/components/sections/Contact'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
+import { ErrorBoundary } from '@/components/error-boundary'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
-      <Navigation />
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <InteractiveElementsWrapper />
-      <Contact />
-      <Footer />
+    <main className="min-h-screen bg-background" id="main-content">
+      <ErrorBoundary>
+        <Navigation />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <Hero />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <About />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <Experience />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <Projects />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <InteractiveElementsWrapper />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <Contact />
+      </ErrorBoundary>
+      
+      <ErrorBoundary>
+        <Footer />
+      </ErrorBoundary>
     </main>
   )
 }

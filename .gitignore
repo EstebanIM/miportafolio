@@ -16,6 +16,7 @@ dist/
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production
 
 # IDE
 .vscode/
@@ -39,6 +40,10 @@ pids
 # Coverage directory used by tools like istanbul
 coverage/
 *.lcov
+
+# Testing
+__tests__/__coverage__/
+.nyc_output/
 
 # Dependency directories
 node_modules/
