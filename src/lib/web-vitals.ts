@@ -1,4 +1,5 @@
 import { onCLS, onINP, onFCP, onLCP, onTTFB, type Metric } from 'web-vitals'
+import { useCallback } from 'react'
 
 // Tipos globales para gtag
 declare global {
@@ -117,15 +118,19 @@ export function initWebVitals() {
 
 // Hook personalizado para usar en componentes React
 export function useWebVitals() {
+  const getStoredVitals = useCallback(() => {
+    if (typeof window === 'undefined') return []
+    return JSON.parse(localStorage.getItem('web-vitals') || '[]')
+  }, [])
+
+  const clearStoredVitals = useCallback(() => {
+    if (typeof window === 'undefined') return
+    localStorage.removeItem('web-vitals')
+  }, [])
+
   return {
-    getStoredVitals: () => {
-      if (typeof window === 'undefined') return []
-      return JSON.parse(localStorage.getItem('web-vitals') || '[]')
-    },
-    clearStoredVitals: () => {
-      if (typeof window === 'undefined') return
-      localStorage.removeItem('web-vitals')
-    }
+    getStoredVitals,
+    clearStoredVitals
   }
 }
 

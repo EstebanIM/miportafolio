@@ -19,6 +19,7 @@ export function Navigation() {
 		{ name: t('navigation.about'), href: '#about' },
 		{ name: t('navigation.experience'), href: '#experience' },
 		{ name: t('navigation.projects'), href: '#projects' },
+		{ name: 'Tech Radar', href: '#tech-radar' },
 		{ name: t('navigation.interactive'), href: '#interactive' },
 		{ name: t('navigation.contact'), href: '#contact' },
 	]
